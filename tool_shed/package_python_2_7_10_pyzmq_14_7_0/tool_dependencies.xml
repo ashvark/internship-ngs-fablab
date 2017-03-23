@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="python" version="2.7.10">
+        <repository name="package_python_2_7_10" owner="avaradha" prior_installation_required="True" />
+    </package>
+    <package name="zeromq" version="4.1.3">
+        <repository name="package_zeromq_4_1_3" owner="avaradha" prior_installation_required="True"  />
+    </package>
+    <package name="pyzmq" version="14.7.0">
+        <install version="1.0">
+            <actions>
+                <action type="download_by_url">https://pypi.python.org/packages/source/p/pyzmq/pyzmq-14.7.0.tar.gz#md5=87e3abb33af5794db5ae85c667bbf324</action>
+                <action type="setup_python_environment">
+                   <repository name="package_python_2_7_10" owner="avaradha" >
+                       <package name="python" version="2.7.10" />
+                   </repository>
+                   <repository name="package_zeromq_4_1_3" owner="avaradha" >
+                       <package name="zeromq" version="4.1.3" />
+                   </repository>
+                    <!-- allow downloading and installing an Python package from https://pypi.org/ -->
+                    <!-- <package>https://pypi.python.org/packages/source/p/pyzmq/pyzmq-14.7.0.tar.gz#md5=87e3abb33af5794db5ae85c667bbf324</package> -->
+                </action>
+                <action type="make_directory">$INSTALL_DIR/lib/python</action>
+                <action type="shell_command">
+                        export PYTHONPATH=$PYTHONPATH:$INSTALL_DIR/lib/python &amp;&amp;
+                        python setup.py install --install-lib $INSTALL_DIR/lib/python --install-scripts $INSTALL_DIR/bin --zmq=$ZEROMQ_ROOT_DIR
+                    </action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PYTHONPATH">$INSTALL_DIR/lib</environment_variable>
+                    <environment_variable action="prepend_to" name="LD_LIBRARY_PATH">$ENV[ZEROMQ_LIB_DIR]</environment_variable>
+                    <environment_variable action="prepend_to" name="PATH">$ENV[PATH_ZEROMQ]</environment_variable>
+                    
+                    <environment_variable action="set_to" name="PYTHONPATH_PYZMQ">$INSTALL_DIR/lib</environment_variable>
+                    <environment_variable action="set_to" name="PYZMQ_ROOT_DIR">$INSTALL_DIR</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+</tool_dependency>

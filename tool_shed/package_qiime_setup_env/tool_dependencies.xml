@@ -1,0 +1,360 @@
+<?xml version="1.0"?>
+<tool_dependency>
+
+    <package name="atlas" version="3.10.2">
+        <repository name="package_atlas_3_10" owner="ashok" prior_installation_required="True" />
+    </package>
+    <package name="python" version="2.7.10">
+        <repository name="package_python_2_7_10" owner="ashok" prior_installation_required="True" />
+    </package>
+    <package name="R" version="3.1.2">
+        <repository name="package_r_3_1_2" owner="ashok" prior_installation_required="True" />
+    </package>
+    <package name="libpng" version="1.6.7">
+        <repository name="package_libpng_1_6_7" owner="ashok" prior_installation_required="True"  />
+    </package>
+   
+
+   <package name="uclust" version="1.2.22">
+        <repository name="package_qiime_dep_1_9_1" owner="ashok" prior_installation_required="True"  />
+    </package>
+    <package name="zeromq" version="4.1.3">
+        <repository name="package_qiime_dep_1_9_1" owner="ashok" prior_installation_required="True"  />
+    </package>
+    <package name="FastTree" version="2.17">
+        <repository name="package_qiime_dep_1_9_1" owner="ashok" prior_installation_required="True" />
+    </package>
+    <package name="cdbfasta" version="10.11.2010">
+        <repository name="package_qiime_dep_1_9_1" owner="ashok" prior_installation_required="True" />
+    </package>
+    <package name="chimeraslayer" version="04.29.2010">
+        <repository name="package_qiime_dep_1_9_1" owner="ashok" prior_installation_required="True" />
+    </package>
+    <package name="cdhit" version="3.1">
+        <repository name="package_qiime_dep_1_9_1" owner="ashok" prior_installation_required="True" />
+    </package>
+    <package name="rdpclassifier" version="2.2">
+        <repository name="package_qiime_dep_1_9_1" owner="ashok" prior_installation_required="True" />
+    </package>
+    <package name="blast" version="2.2.22">
+        <repository name="package_qiime_dep_1_9_1" owner="ashok" prior_installation_required="True" />
+    </package>
+    <package name="muscle" version="3.8.31">
+        <repository name="package_qiime_dep_1_9_1" owner="ashok" prior_installation_required="True" />
+    </package>
+    <package name="infernal" version="1.0.2">
+        <repository name="package_qiime_dep_1_9_1" owner="ashok" prior_installation_required="True" />
+    </package>
+    <package name="cytoscape" version="2.7.0">
+        <repository name="package_qiime_dep_1_9_1" owner="ashok" prior_installation_required="True" />
+    </package>
+    <package name="clearcut" version="1.0.9">
+        <repository name="package_qiime_dep_1_9_1" owner="ashok" prior_installation_required="True" />
+    </package>
+    <package name="vienna" version="1.8.4">
+        <repository name="package_qiime_dep_1_9_1" owner="ashok" prior_installation_required="True" />
+    </package>
+    <package name="parseinsert" version="1.0.4">
+        <repository name="package_qiime_dep_1_9_1" owner="ashok" prior_installation_required="True" />
+    </package>
+    <package name="mothur" version="1.25.0">
+        <repository name="package_qiime_dep_1_9_1" owner="ashok" prior_installation_required="True" />
+    </package>
+    <package name="ampliconnoise" version="1.27">
+        <repository name="package_qiime_dep_1_9_1" owner="ashok" prior_installation_required="True" />
+    </package>
+    <package name="rtax" version="0.984">
+        <repository name="package_qiime_dep_1_9_1" owner="ashok" prior_installation_required="True" />
+    </package>
+    <package name="drisee" version="1.2">
+        <repository name="package_qiime_dep_1_9_1" owner="ashok" prior_installation_required="True" />
+    </package>
+    <package name="blat" version="34">
+        <repository name="package_qiime_dep_1_9_1" owner="ashok" prior_installation_required="True" />
+    </package>
+    <package name="bwa" version="0.6.2">
+        <repository name="package_qiime_dep_1_9_1" owner="ashok" prior_installation_required="True" />
+    </package>
+    <package name="sourcetracker" version="1.0.0">
+        <repository name="package_qiime_dep_1_9_1" owner="ashok" prior_installation_required="True" />
+    </package>
+    <package name="eautils" version="1.1.2">
+        <repository name="package_qiime_dep_1_9_1" owner="ashok" prior_installation_required="True" />
+    </package>
+    <package name="seqprep" version="1.1">
+        <repository name="package_qiime_dep_1_9_1" owner="ashok" prior_installation_required="True" />
+    </package>
+    <package name="raxml" version="7.3.0">
+        <repository name="package_qiime_dep_1_9_1" owner="ashok" prior_installation_required="True" />
+    </package>
+    <package name="muscle" version="3.8.31">
+        <repository name="package_qiime_dep_1_9_1" owner="ashok" prior_installation_required="True" />
+    </package>
+    <package name="qiime_python_dep" version="1.9.1">
+        <repository name="package_qiime_dep_1_9_1" owner="ashok" prior_installation_required="True" />
+    </package>
+    <package name="qiime_r_dep" version="1.9.1">
+        <repository name="package_qiime_dep_1_9_1" owner="ashok" prior_installation_required="True" />
+    </package>
+    
+
+    
+
+
+    
+
+    <!-- <package name="setup_qiime" version="1.9.1">
+        <install version="1.0">
+            <actions>
+                <action type="set_environment">
+                    <repository name="package_atlas_3_10" owner="ashok" >
+                        <package name="atlas" version="3.10.2" />
+                    </repository>
+                    <repository name="package_uclust_1_2_22" owner="ashok" >
+                        <package name="uclust" version="1.2.22" />
+                    </repository>
+                    <repository name="package_zeromq_4_1_3" owner="ashok" >
+                       <package name="zeromq" version="4.1.3" />
+                    </repository>
+                    <repository name="package_fasttree_linux_64bit" owner="ashok" >
+                       <package name="FastTree" version="2.17" />
+                    </repository>
+                    <repository name="package_cdbfasta_10_11_2010" owner="ashok" >
+                       <package name="cdbfasta" version="10.11.2010" />
+                    </repository>
+                    <repository name="package_chimeraslayer_04_29_2010" owner="ashok" >
+                       <package name="chimeraslayer" version="04.29.2010" />
+                    </repository>
+                    <repository name="package_cdhit_3_1" owner="ashok" >
+                       <package name="cdhit" version="3.1" />
+                    </repository>
+                    <repository name="package_rdpclassifier_2_2" owner="ashok" >
+                       <package name="rdpclassifier" version="2.2" />
+                    </repository>
+                    <repository name="package_blast_2_2_22" owner="ashok" >
+                       <package name="blast" version="2.2.22" />
+                    </repository>
+                    <repository name="package_muscle_3_8_31" owner="ashok" >
+                       <package name="muscle" version="3.8.31" />
+                    </repository>
+                    <repository name="package_infernal_1_0_2" owner="ashok" >
+                       <package name="infernal" version="1.0.2" />
+                    </repository>
+                    <repository name="package_cytoscape_2_7_0" owner="ashok" >
+                       <package name="cytoscape" version="2.7.0" />
+                    </repository>
+                    <repository name="package_clearcut_1_0_9" owner="ashok" >
+                       <package name="clearcut" version="1.0.9" />
+                    </repository>
+                    <repository name="package_mothur_1_25_0" owner="ashok" >
+                       <package name="mothur" version="1.25.0" />
+                    </repository>
+                    <repository name="package_ampliconnoise_1_27" owner="ashok" >
+                       <package name="ampliconnoise" version="1.27" />
+                    </repository>
+                    <repository name="package_vienna_1_8_4" owner="ashok" >
+                       <package name="vienna" version="1.8.4" />
+                    </repository>
+                    <repository name="package_rtax_0_984" owner="ashok" >
+                       <package name="rtax" version="0.984" />
+                    </repository>
+                    <repository name="package_parseinsert_1_0_4" owner="ashok" >
+                       <package name="parseinsert" version="1.0.4" />
+                    </repository>
+                    <repository name="package_drisee_1_2" owner="ashok" >
+                       <package name="drisee" version="1.2" />
+                    </repository>
+                    <repository name="package_blat_34" owner="ashok" >
+                       <package name="blat" version="34" />
+                    </repository>
+                    <repository name="package_bwa_0_6_2" owner="ashok" >
+                       <package name="bwa" version="0.6.2" />
+                    </repository>
+                    <repository name="package_sourcetracker_1_0_0" owner="ashok" >
+                       <package name="sourcetracker" version="1.0.0" />
+                    </repository>
+                    <repository name="package_eautils_1_1_2" owner="ashok" >
+                       <package name="eautils" version="1.1.2" />
+                    </repository>
+                    <repository name="package_seqprep_1_1" owner="ashok" >
+                       <package name="seqprep" version="1.1" />
+                    </repository>
+                    <repository name="package_python_2_7_10_qiimepythondep_1_9_1" owner="ashok" >
+                        <package name="qiime_python_dep" version="1.9.1" />
+                    </repository>
+                    <repository name="package_r_3_1_2_qiimerdep_1_9_1" owner="ashok" >
+                        <package name="qiime_r_dep" version="1.9.1" /> 
+                    </repository>
+                </action>
+            </actions>
+        </install>
+    </package> -->
+
+    <package name="setup_qiime" version="1.9.1">
+        <install version="1.0">
+            <actions>
+                <action type="set_environment_for_install">
+                    <repository name="package_atlas_3_10" owner="ashok" >
+                        <package name="atlas" version="3.10.2" />
+                    </repository>
+                    <repository name="package_python_2_7_10" owner="ashok" >
+                       <package name="python" version="2.7.10" />
+                   </repository>
+                   <repository name="package_r_3_1_2" owner="ashok" >
+                        <package name="R" version="3.1.2" />
+                    </repository>
+                    <repository name="package_libpng_1_6_7" owner="ashok" >
+                        <package name="libpng" version="1.6.7" />
+                    </repository>
+                    <repository name="package_qiime_dep_1_9_1" owner="ashok" >
+                       <package name="uclust" version="1.2.22" />
+                       <package name="zeromq" version="4.1.3" />
+                       <package name="FastTree" version="2.17" />
+                       <package name="cdbfasta" version="10.11.2010" />
+                       <package name="chimeraslayer" version="04.29.2010" />
+                       <package name="cdhit" version="3.1" />
+                       <package name="rdpclassifier" version="2.2" />
+                       <package name="blast" version="2.2.22" />
+                       <package name="muscle" version="3.8.31" />
+                       <package name="infernal" version="1.0.2" />
+                       <package name="cytoscape" version="2.7.0" />
+                       <package name="clearcut" version="1.0.9" />
+                       <package name="mothur" version="1.25.0" />
+                       <package name="ampliconnoise" version="1.27" />
+                       <package name="vienna" version="1.8.4" />
+                       <package name="rtax" version="0.984" />
+                       <package name="parseinsert" version="1.0.4" />
+                       <package name="drisee" version="1.2" />
+                       <package name="blat" version="34" />
+                       <package name="bwa" version="0.6.2" />
+                       <package name="sourcetracker" version="1.0.0" />
+                       <package name="eautils" version="1.1.2" />
+                       <package name="seqprep" version="1.1" />
+                       <package name="raxml" version="7.3.0" />
+                       <package name="muscle" version="3.8.31" />
+                       <package name="qiime_python_dep" version="1.9.1" />
+                       <package name="qiime_r_dep" version="1.9.1" />
+                    </repository>
+                </action> 
+                <action type="set_environment">
+                    <!-- Environment for Atlas -->
+                    <environment_variable action="set_to" name="ATLAS_LIB_DIR">$ENV[ATLAS_LIB_DIR]</environment_variable>
+                    <environment_variable action="set_to" name="ATLAS_INCLUDE_DIR">$ENV[ATLAS_INCLUDE_DIR]</environment_variable>
+                    <environment_variable action="set_to" name="ATLAS_BLAS_LIB_DIR">$ENV[ATLAS_BLAS_LIB_DIR]</environment_variable>
+                    <environment_variable action="set_to" name="ATLAS_LAPACK_LIB_DIR">$ENV[ATLAS_LAPACK_LIB_DIR]</environment_variable>
+                    <environment_variable action="set_to" name="ATLAS_ROOT_PATH">$ENV[ATLAS_ROOT_PATH]</environment_variable>
+                    <environment_variable action="prepend_to" name="LD_LIBRARY_PATH">$ENV[ATLAS_ROOT_PATH]/lib</environment_variable>
+                    <environment_variable action="prepend_to" name="LD_LIBRARY_PATH">$ENV[ATLAS_ROOT_PATH]/lib/atlas</environment_variable>
+
+                    <!-- Environment for Libpng -->
+                    <environment_variable action="prepend_to" name="PATH">$ENV[LIBPNG_ROOT]/bin</environment_variable>
+                    <environment_variable action="set_to" name="LIBPNG_LIB_PATH">$ENV[LIBPNG_ROOT]/lib</environment_variable>
+                    <environment_variable action="prepend_to" name="LD_LIBRARY_PATH">$ENV[LIBPNG_ROOT]/lib</environment_variable>
+                    <environment_variable action="prepend_to" name="PKG_CONFIG_PATH">$ENV[LIBPNG_ROOT]/lib/pkgconfig</environment_variable>
+
+                    <!-- Environment for Openmpi -->
+                    <!-- <environment_variable action="prepend_to" name="PATH">$ENV[HOME_OPENMPI]/bin</environment_variable>
+                    <environment_variable action="prepend_to" name="LIBRARY_PATH">$ENV[HOME_OPENMPI]/lib</environment_variable>
+                    <environment_variable action="prepend_to" name="LD_LIBRARY_PATH">$ENV[HOME_OPENMPI]/lib</environment_variable>
+                    <environment_variable action="prepend_to" name="CPATH">$ENV[HOME_OPENMPI]/include</environment_variable>
+                    <environment_variable name="C_INCLUDE_PATH" action="prepend_to">$ENV[HOME_OPENMPI]/include</environment_variable>
+                    <environment_variable name="CPLUS_INCLUDE_PATH" action="prepend_to">$ENV[HOME_OPENMPI]/include</environment_variable> -->
+                    
+                    <!-- Environment for Uclust -->
+                    <environment_variable action="prepend_to" name="PATH">$ENV[PATH_UCLUST]</environment_variable>
+                    <!-- Environment for ZeroMQ -->
+                    <environment_variable name="PATH" action="prepend_to">$ENV[ZEROMQ_ROOT_DIR]/bin</environment_variable>
+                    <environment_variable action="prepend_to" name="LD_LIBRARY_PATH">$ENV[ZEROMQ_ROOT_DIR]/lib</environment_variable>
+                    <environment_variable name="C_INCLUDE_PATH" action="prepend_to">$ENV[ZEROMQ_ROOT_DIR]/include</environment_variable>
+                    <environment_variable name="CPLUS_INCLUDE_PATH" action="prepend_to">$ENV[ZEROMQ_ROOT_DIR]/include</environment_variable>
+                    <!-- Environment for Fasttree -->
+                    <environment_variable name="PATH" action="prepend_to">$ENV[PATH_FASTTREE]</environment_variable>
+                    <!-- Environment for CdbFasta -->
+                    <environment_variable action="prepend_to" name="PATH">$ENV[PATH_CDBFASTA]</environment_variable>
+                    <!-- Environment for Chimerslayer -->
+                    <environment_variable action="prepend_to" name="PATH">$ENV[PATH_CHIMERSLAYER]</environment_variable>
+                    <environment_variable action="prepend_to" name="PATH">$ENV[PATH_NAST]</environment_variable>
+                    <environment_variable action="prepend_to" name="PATH">$ENV[PATH_WIGEON]</environment_variable>
+                    <!-- Environment for Cdhit -->
+                    <environment_variable action="prepend_to" name="PATH">$ENV[PATH_CDHIT]</environment_variable>
+                    <!-- Environment for RDPclassifier -->
+                    <environment_variable action="prepend_to" name="PATH">$ENV[PATH_RDPCLASSIFIER]</environment_variable>
+                    <environment_variable name="RDP_JAR_PATH" action="set_to">$ENV[PATH_RDPCLASSIFIER]/rdp_classifier-2.2.jar</environment_variable>
+                    <!-- Environment for Blast -->
+                    <environment_variable action="prepend_to" name="PATH">$ENV[PATH_BLAST]</environment_variable>
+                    <!-- Environment for Muscle -->
+                    <environment_variable action="prepend_to" name="PATH">$ENV[PATH_MUSCLE]</environment_variable>
+                    <!-- Environment for Infernal -->
+                    <environment_variable action="prepend_to" name="PATH">$ENV[PATH_INFERNAL]</environment_variable>
+                    <!-- Environment for Cytoscape -->
+                    <environment_variable action="prepend_to" name="PATH">$ENV[PATH_CYTOSCAPE]</environment_variable>
+                    <!-- Environment for Clearcut -->
+                    <environment_variable action="prepend_to" name="PATH">$ENV[PATH_CLEARCUT]</environment_variable>
+                    <!-- Environment for Vienna -->
+                    <environment_variable action="prepend_to" name="PATH">$ENV[PATH_VIENNA]</environment_variable>
+                    <!-- Environment for Mothur -->
+                    <environment_variable action="prepend_to" name="PATH">$ENV[PATH_MOTHUR]</environment_variable>
+                    <!-- Environment for AmpliconNoise -->
+                    <environment_variable action="prepend_to" name="PATH">$ENV[AMPLICON_NOISE_HOME]/bin</environment_variable>
+                    <environment_variable action="prepend_to" name="PATH">$ENV[AMPLICON_NOISE_HOME]/Scripts</environment_variable>
+                    <environment_variable name="PYRO_LOOKUP_FILE" action="set_to">$ENV[AMPLICON_NOISE_HOME]/Data/LookUp_Titanium.dat</environment_variable>
+                    <environment_variable name="SEQ_LOOKUP_FILE" action="set_to">$ENV[AMPLICON_NOISE_HOME]/Data/Tran.dat</environment_variable>
+                    <!-- Environment for Rtax -->
+                    <environment_variable action="prepend_to" name="PATH">$ENV[PATH_RTAX]</environment_variable>
+                    <!-- Environment for Drisee -->
+                    <environment_variable action="prepend_to" name="PATH">$ENV[PATH_DRISEE]</environment_variable>
+                    <!-- Environment for Blat -->
+                    <environment_variable action="prepend_to" name="PATH">$ENV[PATH_BLAT]</environment_variable>
+                    <!-- Environment for BWA -->
+                    <environment_variable action="prepend_to" name="PATH">$ENV[PATH_BWA]</environment_variable>
+                    <!-- Environment for Sourcetracker -->
+                    <environment_variable action="prepend_to" name="PATH">$ENV[SOURCETRACKER_PATH]</environment_variable>
+                    <environment_variable action="prepend_to" name="PATH">$ENV[SOURCETRACKER_PATH]/src</environment_variable>
+                    <environment_variable action="set_to" name="SOURCETRACKER_PATH">$ENV[SOURCETRACKER_PATH]</environment_variable>
+                    
+                    <!-- Environment for Eautils -->
+                    <environment_variable action="prepend_to" name="PATH">$ENV[PATH_EAUTILS]</environment_variable>
+                    <!-- Environment for Seqprep -->
+                    <environment_variable action="prepend_to" name="PATH">$ENV[PATH_SEQPREP]</environment_variable>
+                    <!-- Environment for raxml -->
+                    <environment_variable action="prepend_to" name="PATH">$ENV[PATH_RAXML]</environment_variable>
+                     <!-- Environment for Muscle -->
+                    <environment_variable action="prepend_to" name="PATH">$ENV[PATH_MUSCLE]</environment_variable>
+                   
+                    
+                    <!-- Environment for Python -->
+
+                    <environment_variable action="prepend_to" name="PATH">$ENV[PYTHONHOME]/bin</environment_variable>
+                    <environment_variable action="prepend_to" name="PYTHONPATH">$ENV[PYTHONHOME]</environment_variable>
+                    <environment_variable action="prepend_to" name="PYTHONPATH">$ENV[PYTHONHOME]/lib</environment_variable>
+                    <environment_variable action="prepend_to" name="PYTHONPATH">$ENV[PYTHONHOME]/lib/python2.7</environment_variable>
+                    <environment_variable action="prepend_to" name="PYTHONPATH">$ENV[PYTHONHOME]/lib/python2.7/site-packages</environment_variable>
+                    <environment_variable action="set_to" name="PYTHONHOME">$ENV[PYTHONHOME]</environment_variable>
+                    <environment_variable action="prepend_to" name="PKG_CONFIG_PATH">$ENV[PYTHONHOME]/lib/pkgconfig</environment_variable>
+          
+                     <!-- Environment for python packages of QIIME -->
+                    <environment_variable action="prepend_to" name="PYTHONPATH">$ENV[QIIME_PYTHON_DEP_ROOT_DIR]</environment_variable>
+                    <environment_variable action="prepend_to" name="PYTHONPATH">$ENV[QIIME_PYTHON_DEP_ROOT_DIR]/lib</environment_variable>
+                    <environment_variable action="prepend_to" name="PATH">$ENV[QIIME_PYTHON_DEP_ROOT_DIR]/bin</environment_variable>
+
+                    <!-- Environment for R -->
+                    <environment_variable action="set_to" name="TCL_LIBRARY">$ENV[TCL_LIBRARY]</environment_variable>
+                    <environment_variable action="set_to" name="TK_LIBRARY">$ENV[TK_LIBRARY]</environment_variable>
+                    <environment_variable action="set_to" name="R_DOC_DIR">$ENV[R_DOC_DIR]</environment_variable>
+                    <environment_variable action="set_to" name="R_HOME_DIR">$ENV[R_HOME_DIR]</environment_variable>
+                    <environment_variable action="set_to" name="R_INCLUDE_DIR">$ENV[R_INCLUDE_DIR]</environment_variable>
+                    <environment_variable action="set_to" name="R_SHARE_DIR">$ENV[R_SHARE_DIR]</environment_variable>
+                    <environment_variable action="set_to" name="R_HOME">$ENV[RHOME]</environment_variable>
+                    <environment_variable action="set_to" name="RHOME">$ENV[RHOME]</environment_variable>
+                    <environment_variable action="prepend_to" name="PKG_CONFIG_DIR">$ENV[R_ROOT_DIR]/lib/pkgconfig:$ENV[R_ROOT_DIR]/share/pkgconfig</environment_variable>
+                    <environment_variable action="prepend_to" name="PKG_CONFIG_PATH">$ENV[R_ROOT_DIR]/lib/pkgconfig:$ENV[R_ROOT_DIR]/share/pkgconfig</environment_variable>
+                    <environment_variable action="prepend_to" name="PATH">$ENV[R_ROOT_DIR]/bin</environment_variable>
+
+
+                    <!-- Environment for R modules -->
+                    <environment_variable action="prepend_to" name="R_LIBS">$ENV[QIIME_R_DEP_ROOT_PATH]</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+</tool_dependency>

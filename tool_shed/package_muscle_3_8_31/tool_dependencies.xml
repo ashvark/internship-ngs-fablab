@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="muscle" version="3.8.31">
+        <install version="1.0">
+            <actions>
+            	<action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv http://www.drive5.com/muscle/downloads3.8.31/muscle3.8.31_i86linux64.tar.gz -O muscle3.8.31_i86linux64.tar.gz </action>
+                <action type="shell_command">tar xfz muscle3.8.31_i86linux64.tar.gz</action>
+                <action type="shell_command">rm muscle3.8.31_i86linux64.tar.gz</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR</environment_variable>
+                    <environment_variable action="set_to" name="PATH_MUSCLE">$INSTALL_DIR</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+</tool_dependency>

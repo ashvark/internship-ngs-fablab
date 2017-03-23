@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="gsl" version="1.16">
+        <repository name="package_gsl_1_16" owner="avaradha" prior_installation_required="True" />
+    </package>
+    <package name="eautils" version="1.1.2">
+        <install version="1.0">
+            <actions>
+                <action type="set_environment_for_install">
+                    <repository name="package_gsl_1_16" owner="avaradha" >
+                        <package name="gsl" version="1.16" />
+                    </repository>
+                </action>
+            	<action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv https://ea-utils.googlecode.com/files/ea-utils.1.1.2-537.tar.gz -O ea-utils.1.1.2-537.tar.gz </action>
+                <action type="shell_command">tar xfz ea-utils.1.1.2-537.tar.gz</action>
+                <action type="shell_command">rm ea-utils.1.1.2-537.tar.gz</action>
+                <action type="change_directory">ea-utils.1.1.2-537</action>
+                <action type="shell_command">make</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/ea-utils.1.1.2-537</environment_variable>
+                    <environment_variable action="set_to" name="PATH_EAUTILS">$INSTALL_DIR/ea-utils.1.1.2-537</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+</tool_dependency>

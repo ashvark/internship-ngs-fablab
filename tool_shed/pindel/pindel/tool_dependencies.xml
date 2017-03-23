@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="pindel" version="0.2.5b4">
+        <repository name="package_pindel_0_2_5b4" prior_installation_required="True" owner="avaradha"/>
+    </package>
+</tool_dependency>

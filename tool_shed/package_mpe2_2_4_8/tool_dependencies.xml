@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<tool_dependency>
+     <package name="mpich" version="3.1.4">
+        <repository name="package_mpich_3_1_4" owner="avaradha" prior_installation_required="True" />
+    </package>
+    <package name="mpe2" version="2.4.8">
+        <install version="1.0">
+            <actions>
+                <action type="download_by_url">ftp://ftp.mcs.anl.gov/pub/mpi/mpe/mpe2-2.4.8.tgz</action>
+                <action type="shell_command">echo $PWD</action>
+                <action type="shell_command">ls</action>
+                <action type="change_directory">mpe2-2.4.8</action>
+                <!-- <action type="change_directory">$TMP_WORK_DIR</action>
+                <action type="shell_command">wget -nv ftp://ftp.mcs.anl.gov/pub/mpi/mpe/mpe2.tar.gz -O mpe2.tar.gz</action>
+                <action type="shell_command">tar xfz mpe2.tar.gz</action>
+                <action type="shell_command">rm mpe2.tar.gz</action>
+                <action type="change_directory">mpe2-2.4.8</action> -->
+                <action type="set_environment_for_install">
+                    <repository name="package_mpich_3_1_4" owner="avaradha" >
+                        <package name="mpich" version="3.1.4" />
+                    </repository>
+                </action>
+                <action type="shell_command">./configure --prefix $INSTALL_DIR CC=mpicc F77=mpif77</action>
+                <action type="shell_command">make</action>
+                <action type="shell_command">make install</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/bin</environment_variable>
+                    <environment_variable action="prepend_to" name="LIBRARY_PATH">$INSTALL_DIR/lib</environment_variable>
+                    <environment_variable action="prepend_to" name="LD_LIBRARY_PATH">$INSTALL_DIR/lib</environment_variable>
+                    <environment_variable action="prepend_to" name="CPATH">$INSTALL_DIR/include</environment_variable>
+                    <environment_variable name="C_INCLUDE_PATH" action="prepend_to">$INSTALL_DIR/include</environment_variable>
+                    <environment_variable name="CPLUS_INCLUDE_PATH" action="prepend_to">$INSTALL_DIR/include</environment_variable>
+                    <environment_variable action="set_to" name="PATH_MPICH">$INSTALL_DIR/bin</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+</tool_dependency>

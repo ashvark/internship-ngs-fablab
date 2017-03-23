@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="R" version="3.1.2">
+        <repository name="package_r_3_1_2" owner="avaradha" prior_installation_required="True" />
+    </package>
+    <package name="optimalcapturesegmentation" version="0.9.4">
+        <install version="1.0">
+            <actions>
+                <action type="setup_r_environment">
+                    <repository name="package_r_3_1_2" owner="avaradha" >
+                        <package name="R" version="3.1.2" />
+                    </repository>
+                    <package>http://bioinformatics.nki.nl/software/ocs/downloads/optimalCaptureSegmentation_0.9-4.tar.gz</package>
+                </action>
+            </actions>
+        </install>
+    </package>
+</tool_dependency>

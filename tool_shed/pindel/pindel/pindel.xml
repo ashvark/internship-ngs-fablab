@@ -1,0 +1,108 @@
+<tool id="pindel" name="Pindel" version="0.2.5b4">
+  <requirements>
+            <requirement type="package" version="0.2.5b4">pindel</requirement>
+  </requirements>
+  <command interpreter="bash">
+#if $genome_choice.genome_option == "indexed":
+    ref_genome_path=${genome_choice.reference.fields.path};
+    dbkey_var=${genome_choice.reference};
+#else:
+    ref_genome_path=${genome_choice.OwnFile};
+    dbkey_var=${genome_choice.OwnFiledbkey};
+#end if
+
+pindel.sh \${ref_genome_path} \${dbkey_var} ${input1} ${tagname} ${platform} ${meanInsertSize} ${numOfThreads} ${maxRangeIndex} ${sizeOfWindow} ${seqError} ${sensitivity} ${maxMismatchRate} ${reportInversions} ${reportTandem} ${reportLongInversions} ${reportBreakPoints} ${reportCloseMapped} ${reportOnlyClosedMapped} ${reportInterchrEvents} ${includefile} ${excludefile} ${additionalMismatch} ${minPerfectMatch} ${minNTSize} ${minInversionSize} ${minNumMatchedBases} ${balanceCutoff} ${anchorQuality} ${minSupportForEvent} ${output_vcf} ${chromosome} ${__new_file_path__}/O_${output_vcf.id} ${gatkvar} ${vcfheader} 2>&amp;1 > ${output_log}
+
+  </command>
+  <inputs>
+    <conditional name="genome_choice">
+      <param name="genome_option" type="select" label="Will you select a reference genome from your history or use a built-in index?">
+        <option value="indexed">Use a built-in index</option>
+        <option value="history">Use one from the history</option>
+      </param>
+      <when value="indexed">
+              <param name="reference" type="select" label="Select a reference genome">
+                     <options from_data_table="fasta_indexes" />
+                      <filter type="sort_by" column="1" />
+                      <validator type="no_options" message="No indexes are available" />
+              </param>
+      </when>
+      <when value="history">
+        <param name="OwnFile" type="data" format="fasta" label="Select a reference from history" />
+        <param name="OwnFiledbkey" type="text" value="" label="Enter the dbkey">
+          <validator type="empty_field"/>
+        </param>
+      </when>
+    </conditional>
+    <param name="input1" type="data" format="bam" metadata_name="dbkey" label="paired-end BAM file mapped with BWA"/>
+    <param name="tagname" type="text" value="None" label="input the tag name">
+        <validator type="empty_field" message="Please enter a tag name"/>
+    </param>
+    <param name="platform" type="select" label="Which sequence platform?">
+        <option value="Illumina-PairEnd">Illumina-PairEnd</option>
+        <option value="Illumina-MatePair">Illumina-MatePair</option>
+    </param>
+    <param name="chromosome" type="text" value="ALL" label="Chromosome" help="Which chr/fragment. Pindel will process reads for one chromosome each time. ChrName must be the same as in reference sequence and in read file. '-c ALL' will make Pindel loop over all chromosomes. The search for indels and SVs can also be limited to a specific region; -c 20:10,000,000 will only look for indels and SVs after position 10,000,000 = [10M, end], -c 20:5,000,000-15,000,000 will report indels in the range between and including the bases at position 5,000,000 and 15,000,000 = [5M, 15M]. (default ALL)"/>
+    <param name="meanInsertSize" type="integer" value="300" label="Insert size"/>
+    <param name="numOfThreads" type="integer" value="4"  label="the number of threads Pindel will use"/>
+    <param name="maxRangeIndex" type="integer" value="4"  label="the maximum size of structural variations to be detected(range: 1-9)"/>
+    <param name="sizeOfWindow" type="integer" value="5"  label="the window size (divides the reference in bins of X million bases, default 5=5 million)"/>
+    <param name="seqError" type="float" value="0.03"  label="The expected fraction of sequencing errors"/>
+    <param name="sensitivity" type="float" value="0.95" label="Sensitivity"/>
+    <param name="maxMismatchRate" type="float" value="0.05"  label="only reads with fewer mismatches with the reference genome than this fraction will be considered"/>
+    <param name="reportInversions" type="boolean" checked="true" truevalue="true" falsevalue="false" label="Report inversions" />
+    <param name="reportTandem" type="boolean" checked="true" truevalue="true" falsevalue="false" label="Report tandem duplications" />
+    <param name="reportLongInversions" type="boolean" checked="true" truevalue="true" falsevalue="false" label="Report long inversions" help="report insertions of which the full sequence cannot be deduced because of their length"/>
+    <param name="reportBreakPoints" type="boolean" checked="false" truevalue="true" falsevalue="false" label="Report break points" />
+    <param name="reportCloseMapped" type="boolean" checked="false" truevalue="true" falsevalue="false" label="Report close mapped reads" help="report reads of which only one end (the one closest to the mapped read of the paired-end read) could be mapped" />
+    <param name="reportOnlyClosedMapped" type="boolean" checked="false" truevalue="true" falsevalue="false" label="Report only close mapped reads" help="do not search for SVs, only report reads of which only one end (the one closest to the mapped read of the paired-end read) could be mapped (the output file can then be used as an input file for another run of pindel, which may save size if you need to transfer files). (default false)"/>
+    <param name="reportInterchrEvents" type="boolean" checked="true" truevalue="true" falsevalue="false" label="Report interchromosomal events"/>
+    <param name="includefile" type="data" format="bed" optional="true" label="include a region" help="If you want Pindel to process a set of regions, please provide a bed file here: chr start end"/>
+    <param name="excludefile" type="data" format="bed" optional="true" label="exclude a region" help="If you want Pindel to skip a set of regions, please provide a bed file here: chr start end"/>
+    <param name="additionalMismatch" type="integer" value="1"  label="Additional mismatch" help="Pindel will only map part of a read to the reference genome if there are no other candidate positions with no more than the specified number of mismatches position.The bigger this value, the more accurate but less sensitive"/>
+    <param name="minPerfectMatch" type="integer" value="3"  label="Min perfect match around BP" help=" at the point where the read is split into two, there should at least be this number of perfectly matching bases between read and reference"/>
+    <param name="minNTSize" type="integer" value="50"  label="Min NT size" help="only report inserted (NT) sequences in deletions greater than this size"/>
+    <param name="minInversionSize" type="integer" value="50" label="Min inversion size" help="only report inversions greater than this number of bases"/>
+    <param name="minNumMatchedBases" type="integer" value="30" label="Min number of matched bases" help="only consider reads as evidence if they map with more than this number of bases to the reference"/>
+    <param name="balanceCutoff" type="integer" value="0" label="balance cutoff" help="the number of bases of a SV above which a more stringent filter is applied which demands that both sides of the SV are mapped with sufficiently long strings of bases (default 0)"/>
+    <param name="anchorQuality" type="integer" value="0" label="Anchor Quality" help="The minimal mapping quality of the reads Pindel uses as anchor If you only need high confident calls, set to 30 or higher(default 0)"/>
+    <param name="minSupportForEvent" type="integer" value="3" label="Minimum support for event" help="Pindel only calls events which have this number or more supporting reads (default 3)"/>
+    <param name="gatkvar" type="select" display="radio" label="Gatk compatability">
+        <option value="No" selected="true">No</option>
+        <option value="Yes">Yes</option>
+    </param>
+    <param name="vcfheader" type="select" display="radio" label="Vcf header">
+        <option value="Yes" selected="true">Yes</option>
+        <option value="No">No</option>
+    </param>
+  </inputs>
+  <outputs>
+    <data name="output_vcf" format="vcf" label="Pindel on ${on_string} (VCF)"/>
+    <data name="output_log" format="txt" label="${tool.name} on ${on_string} (log)" />
+  </outputs>
+ <help>
+
+**What it does**
+
+Pindel is a pattern growth approach, to detect breakpoints of large deletions and medium sized insertions from paired-end short reads. Pindel was designed for BWA based BAM Illumina data.
+
+.. _Pindel: http://www.ebi.ac.uk/~kye/pindel/
+
+------
+
+**Detecting large deletions**
+
+When we map paired-end reads to the reference genome, for the majority of the reads, both ends can be mapped to the reference genome. However, a small portion of them might have only one end mapped to the reference genome. One of the possibilities is that the unmapped read mate spans the break point of a large deletion event in the test sample compared to the reference genome as shown in Figure 1a. Thus, those unmapped reads actually carry the information about the precise break points of the deletion event. If we can find a proper position to split the read into two fragments, which can be mapped back to the reference separately, we will be able to compute the exact positions of the break points and also the fragment deleted compared to the reference. If we collect multiple reads that support the same incidence, we will be more confident about the deletion event in the test sample.
+
+**Detecting medium sized insertions**
+
+In the previous section, we explained how to compute the precise break points of deletion events. The deletion size can be rather large as long as we find unique matches for the two parts of the unmapped read. It is, however, difficult to infer the fragment for large insertions directly from the read sequence. In this case we aim to compute the precise break points and the fragment inserted in the medium sized range (up to 16 bases for 36 bp reads or for longer reads: ReadLength? - 20). The computational procedure is very similar to that used for searching deletions.
+
+------
+
+**Output**
+
+The Pindel output is converted to the VCF format for better postprocessing. Per default BP (break points) and LI (long insertions) are not reported and are even not yet supported for the pindel2vcf converter because of different header types.
+  </help>
+</tool>
+

@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="python" version="2.7.10">
+        <repository name="package_python_2_7_10" owner="avaradha" prior_installation_required="True" />
+    </package>
+    <!--Dependancy for Numpy and scipy package-->
+    <package name="atlas" version="3.10.2">
+        <repository name="package_atlas_3_10" owner="avaradha" prior_installation_required="True" />
+    </package>
+    <!--Dependancy for scipy package-->
+    <package name="lapack" version="3.5.0">
+        <repository name="package_lapack_3_5_0" owner="avaradha" prior_installation_required="True"  />
+    </package>
+    <!--Dependancy for h5py package-->
+    <package name="hdf5" version="1.8.12">
+        <repository name="package_hdf5_1_8_12" owner="avaradha" prior_installation_required="True"  />
+    </package>
+    <!--Dependancy for matplotlib package-->
+    <package name="freetype" version="2.5.2">
+        <repository name="package_freetype_2_5_2" owner="avaradha" prior_installation_required="True"  />
+    </package>
+    <!--Dependancy for matplotlib package-->
+    <package name="libpng" version="1.6.7">
+        <repository name="package_libpng_1_6_7" owner="avaradha" prior_installation_required="True"  />
+    </package>
+    <!--Dependancy for matplotlib package-->
+    <package name="zlib" version="1.2.8">
+        <repository name="package_zlib_1_2_8" owner="avaradha" prior_installation_required="True"  />
+    </package>
+    <!--Dependancy for mpi4py package-->
+    <package name="mpich" version="3.1.4">
+        <repository name="package_mpich_3_1_4" owner="avaradha" prior_installation_required="True" />
+    </package>
+    <!--Dependancy for mpi4py package-->
+    <package name="mpe2" version="2.4.8">
+        <repository name="package_mpe2_2_4_8" owner="avaradha" prior_installation_required="True" />
+    </package>
+    <!--Dependancy for pynast package-->
+    <package name="uclust" version="1.2.22">
+        <repository name="package_uclust_1_2_22" owner="avaradha" prior_installation_required="True"  />
+    </package>
+    <!--Dependancy for pysqlite package-->
+    <package name="sqlite" version="3.8.3">
+        <repository name="package_sqlite_3_8_3" owner="avaradha" prior_installation_required="True"  />
+    </package>
+
+    <package name="qiime_python_dep" version="1.9.1">
+        <install version="1.0">
+            <actions>
+                <action type="setup_python_environment">
+                   <repository name="package_python_2_7_10" owner="avaradha" >
+                       <package name="python" version="2.7.10" />
+                   </repository>
+                    <repository name="package_atlas_3_10" owner="avaradha" >
+                        <package name="atlas" version="3.10.2" />
+                    </repository>
+                    <repository name="package_lapack_3_5_0" owner="avaradha" >
+                        <package name="lapack" version="3.5.0" />
+                    </repository>
+                    <repository name="package_hdf5_1_8_12" owner="avaradha" >
+                        <package name="hdf5" version="1.8.12" />
+                    </repository>
+                    <repository name="package_zlib_1_2_8" owner="avaradha" >
+                        <package name="zlib" version="1.2.8" />
+                    </repository>
+                    <repository name="package_freetype_2_5_2" owner="avaradha" >
+                        <package name="freetype" version="2.5.2" />
+                    </repository>
+                    <repository name="package_libpng_1_6_7" owner="avaradha" >
+                        <package name="libpng" version="1.6.7" />
+                    </repository>
+                    <repository name="package_mpich_3_1_4" owner="avaradha" >
+                        <package name="mpich" version="3.1.4" />
+                    </repository>
+                   <repository name="package_mpe2_2_4_8" owner="avaradha" >
+                       <package name="mpe2" version="2.4.8" />
+                   </repository>
+                   <repository name="package_sqlite_3_8_3" owner="avaradha" >
+                       <package name="sqlite" version="3.8.3" />
+                   </repository>
+
+                    <!-- allow downloading and installing an Python package from https://pypi.org/ -->
+                    <package>https://pypi.python.org/packages/source/n/numpy/numpy-1.9.1.tar.gz</package>
+                    <package>https://pypi.python.org/packages/source/p/pyqi/pyqi-0.3.2.tar.gz</package>
+                    <package>https://pypi.python.org/packages/source/s/scipy/scipy-0.14.1.tar.gz#md5#1bfedd3197b3e3f8cd131ae2c06a1bf5</package>
+                    <package>https://pypi.python.org/packages/source/C/Cython/Cython-0.23.1.tar.gz</package>
+                    <package>https://pypi.python.org/packages/source/h/h5py/h5py-2.5.0.tar.gz</package>
+                    <package>https://pypi.python.org/packages/source/q/qcli/qcli-0.1.1.tar.gz#md5=25b7bc209c1e52be16efad295bd37ed4</package>
+                    <package>https://pypi.python.org/packages/source/e/emperor/emperor-0.9.51.tar.gz</package>
+                    <package>https://pypi.python.org/packages/source/b/biom-format/biom-format-2.1.4.tar.gz#md5=f949d1aef3d17d022dbc7105ade1851e</package>
+                    <package>http://downloads.sourceforge.net/project/pycogent/PyCogent/1.5/PyCogent-1.5.tgz</package>
+                    <package>https://pypi.python.org/packages/source/g/gdata/gdata-2.0.18.tar.gz#md5=13b6e6dd8f9e3e9a8e005e05a8329408</package>
+                    <package>https://pypi.python.org/packages/source/i/ipython/ipython-4.0.0.tar.gz#md5=c2fecbcf1c0fbdc82625c77a50733dd6</package>
+                    <package>https://pypi.python.org/packages/source/s/six/six-1.9.0.tar.gz#md5#476881ef4012262dfc8adc645ee786c4</package>
+                    <package>https://pypi.python.org/packages/source/m/matplotlib/matplotlib-1.4.3.tar.gz#md5=86af2e3e3c61849ac7576a6f5ca44267</package>
+                    <package>https://pypi.python.org/packages/source/m/mpi4py/mpi4py-1.3.1.tar.gz#md5=dbe9d22bdc8ed965c23a7ceb6f32fc3c</package>
+                    <package>https://pypi.python.org/packages/source/M/MySQL-python/MySQL-python-1.2.3.tar.gz#md5=215eddb6d853f6f4be5b4afc4154292f</package>
+                    <!-- <package>http://downloads.sourceforge.net/project/pprospector/pprospector-1.0.1.tar.gz</package> -->
+                    <package>https://pypi.python.org/packages/source/p/pysqlite/pysqlite-2.8.1.tar.gz#md5=7a062cbd146eec630a575f099b0c2eaf</package>
+                    <package>https://pypi.python.org/packages/source/S/Sphinx/Sphinx-1.3.1.tar.gz#md5=8786a194acf9673464c5455b11fd4332</package>
+                    <package>https://pypi.python.org/packages/source/S/SQLAlchemy/SQLAlchemy-1.0.8.tar.gz</package>
+                    <package>https://pypi.python.org/packages/source/t/tree2tax/tree2tax-0.1.3.tar.gz</package>
+                    <package>https://pypi.python.org/packages/source/t/tmdb3/tmdb3-0.7.2.tar.gz</package>
+                    <package>https://pypi.python.org/packages/source/t/tornado/tornado-4.2.1.tar.gz</package>
+                    <package>https://pypi.python.org/packages/source/b/burrito/burrito-0.9.1.tar.gz</package>
+                    <package>https://pypi.python.org/packages/source/b/burrito-fillings/burrito-fillings-0.1.1.tar.gz</package>
+                    <package>https://pypi.python.org/packages/source/p/pandas/pandas-0.16.2.tar.gz#md5=a92787bcdf0fc0c6d5f4fe4877335ab5</package>
+                    <package>https://pypi.python.org/packages/source/p/python-dateutil/python-dateutil-2.4.2.tar.gz#md5=4ef68e1c485b09e9f034e10473e5add2</package>
+                    <package>https://pypi.python.org/packages/source/s/setuptools/setuptools-18.3.1.tar.gz#md5=748187b93152fa60287dfb896837fd7c</package> 
+                    <package>https://pypi.python.org/packages/source/m/mock/mock-1.0.1.tar.gz#md5=c3971991738caa55ec7c356bbc154ee2</package> 
+                    <package>https://pypi.python.org/packages/source/n/nose/nose-1.3.7.tar.gz#md5=4d3ad0ff07b61373d2cefc89c5d0b20b</package>
+                    <package>https://pypi.python.org/packages/source/p/pyparsing/pyparsing-2.0.3.tar.gz#md5=0fe479be09fc2cf005f753d3acc35939</package>
+                    <package>https://pypi.python.org/packages/source/p/pexpect/pexpect-3.3.tar.gz</package>
+                    <package>https://pypi.python.org/packages/source/t/traitlets/traitlets-4.0.0.tar.gz#md5=27df56a921848686cf52766177a434f2</package>
+                    <package>https://pypi.python.org/packages/source/s/simplegeneric/simplegeneric-0.8.1.zip</package>
+                    <package>https://pypi.python.org/packages/source/p/pickleshare/pickleshare-0.3.zip</package>
+                    <package>https://pypi.python.org/packages/source/d/decorator/decorator-4.0.2.tar.gz#md5=033c9563af492c4ce2680ee6ca481fa7</package>
+                    <package>https://pypi.python.org/packages/source/q/qiime/qiime-1.9.1.tar.gz#md5=32d4db2b2c888dbbfc6aa33f02725526</package>
+                    <package>https://pypi.python.org/packages/source/q/qiime-default-reference/qiime-default-reference-0.1.3.tar.gz</package>
+
+                    
+                </action>
+                <action type="change_directory">$TMP_WORK_DIR</action>
+                <action type="shell_command">wget -nv --no-check-certificate http://sourceforge.net/projects/pprospector/files/pprospector-1.0.1.tar.gz</action>
+                <action type="shell_command">tar xfz pprospector-1.0.1.tar.gz</action>
+                <action type="change_directory">$TMP_WORK_DIR/pprospector-1.0.1</action>
+                <action type="shell_command">R CMD INSTALL $TMP_WORK_DIR/pprospector-1.0.1 -l $INSTALL_DIR </action>
+                <action type="shell_command">
+                        export PYTHONPATH=$PYTHONPATH:$INSTALL_DIR/ &amp;&amp;
+                        python setup.py install --install-lib $INSTALL_DIR/ --install-scripts $INSTALL_DIR/bin
+                </action>
+                
+                <action type="set_environment">
+                    <repository name="package_python_2_7_10" owner="avaradha" >
+                       <package name="python" version="2.7.10" />
+                   </repository>
+
+                    <environment_variable action="prepend_to" name="PYTHONPATH">$INSTALL_DIR</environment_variable>
+                    <environment_variable action="prepend_to" name="PYTHONPATH">$INSTALL_DIR/lib</environment_variable>
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/bin</environment_variable>
+                    
+                    <environment_variable action="prepend_to" name="LD_LIBRARY_PATH">$ENV[ATLAS_LIB_DIR]</environment_variable>
+                    <environment_variable action="set_to" name="PYTHONPATH_NUMPY">$INSTALL_DIR</environment_variable>
+                    <environment_variable action="prepend_to" name="LD_LIBRARY_PATH">$ENV[ATLAS_LIB_DIR]/atlas</environment_variable>
+                    <environment_variable action="prepend_to" name="PATH">$ENV[PATH_NUMPY]</environment_variable>
+                    <environment_variable action="prepend_to" name="PATH">$ENV[PATH_OPENMPI]</environment_variable>
+                    <environment_variable action="prepend_to" name="PATH">$ENV[PATH_UCLUST]</environment_variable>
+
+                    <environment_variable action="set_to" name="PYTHONPATH_QIIME_PYTHON_DEP">$INSTALL_DIR</environment_variable>
+                    <environment_variable action="set_to" name="PATH_QIIME_PYTHON_DEP">$INSTALL_DIR/bin</environment_variable>
+                    <environment_variable action="set_to" name="QIIME_PYTHON_DEP_ROOT_DIR">$INSTALL_DIR</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+</tool_dependency>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="openmpi" version="1.8.8">
+        <install version="1.0">
+            <actions>
+                <action type="download_by_url">http://www.open-mpi.de/software/ompi/v1.8/downloads/openmpi-1.8.8.tar.gz</action>
+                <action type="shell_command">./configure --prefix $INSTALL_DIR </action>
+                <action type="shell_command">make</action>
+                <action type="shell_command">make install</action>
+            	<action type="change_directory">$INSTALL_DIR</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/bin</environment_variable>
+                    <environment_variable action="prepend_to" name="LIBRARY_PATH">$INSTALL_DIR/lib</environment_variable>
+                    <environment_variable action="prepend_to" name="LD_LIBRARY_PATH">$INSTALL_DIR/lib</environment_variable>
+                    <environment_variable action="prepend_to" name="CPATH">$INSTALL_DIR/include</environment_variable>
+                    <environment_variable name="C_INCLUDE_PATH" action="prepend_to">$INSTALL_DIR/include</environment_variable>
+                    <environment_variable name="CPLUS_INCLUDE_PATH" action="prepend_to">$INSTALL_DIR/include</environment_variable>
+                    <environment_variable action="set_to" name="PATH_OPENMPI">$INSTALL_DIR/bin</environment_variable>
+                    <environment_variable action="set_to" name="ROOT_OPENMPI">$INSTALL_DIR</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+</tool_dependency>

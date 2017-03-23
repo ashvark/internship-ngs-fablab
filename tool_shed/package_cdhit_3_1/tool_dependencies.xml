@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="cdhit" version="3.1">
+        <install version="1.0">
+            <actions>
+            	<action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv ftp://ftp.microbio.me/pub/QIIME-v1.5.0-dependencies/cd-hit-2007-0131.tgz -O cd-hit-3.1.tgz </action>
+                <action type="shell_command">tar xfz cd-hit-3.1.tgz</action>
+                 <action type="shell_command">rm cd-hit-3.1.tgz</action>
+                <action type="change_directory">cd-hit</action>
+                <action type="shell_command">make</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/cd-hit</environment_variable>
+                    <environment_variable action="set_to" name="PATH_CDHIT">$INSTALL_DIR/cd-hit</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+</tool_dependency>

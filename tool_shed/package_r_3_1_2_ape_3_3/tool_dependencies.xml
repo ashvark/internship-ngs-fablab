@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="R" version="3.1.2">
+        <repository name="package_r_3_1_2" owner="avaradha" prior_installation_required="True" />
+    </package>
+    <package name="ape" version="3.3">
+        <install version="1.0">
+            <actions>
+                <action type="setup_r_environment">
+                    <repository name="package_r_3_1_2" owner="avaradha" >
+                        <package name="R" version="3.1.2" />
+                    </repository>
+                    <package>https://cran.r-project.org/src/contrib/lattice_0.20-33.tar.gz</package>
+                    <package>https://cran.r-project.org/src/contrib/nlme_3.1-122.tar.gz</package>
+                    <package>https://cran.r-project.org/src/contrib/ape_3.3.tar.gz</package>
+                </action>
+            </actions>
+        </install>
+    </package>
+</tool_dependency>

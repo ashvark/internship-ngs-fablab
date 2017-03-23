@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="rtax" version="0.984">
+        <install version="1.0">
+            <actions>
+            	<action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv http://static.davidsoergel.com/rtax-0.984.tgz -O rtax-0.984.tgz </action>
+                <action type="shell_command">tar xfz rtax-0.984.tgz</action>
+                <action type="shell_command">rm rtax-0.984.tgz</action>
+                <action type="change_directory">rtax-0.984</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/rtax-0.984</environment_variable>
+                    <environment_variable action="set_to" name="PATH_RTAX">$INSTALL_DIR/rtax-0.984</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+</tool_dependency>

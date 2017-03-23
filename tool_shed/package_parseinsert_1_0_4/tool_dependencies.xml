@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="parseinsert" version="1.0.4">
+        <install version="1.0">
+            <actions>
+            	<action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv http://downloads.sourceforge.net/project/parsinsert/ParsInsert.1.04.tgz -O ParsInsert.1.04.tgz </action>
+                <action type="shell_command">tar xfz ParsInsert.1.04.tgz</action>
+                <action type="shell_command">rm ParsInsert.1.04.tgz</action>
+                <action type="shell_command">make</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR</environment_variable>
+                    <environment_variable action="set_to" name="PATH_PARSEINSERT">$INSTALL_DIR</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+</tool_dependency>

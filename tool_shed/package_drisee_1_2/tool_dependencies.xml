@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="drisee" version="1.2">
+        <install version="1.0">
+            <actions>
+            	<action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv https://github.com/MG-RAST/DRISEE/archive/v1.2.tar.gz -O drisee-1.2.tar.gz </action>
+                <action type="shell_command">tar xfz drisee-1.2.tar.gz</action>
+                <action type="shell_command">rm drisee-1.2.tar.gz</action>
+                <action type="change_directory">DRISEE-1.2</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/DRISEE-1.2</environment_variable>
+                    <environment_variable action="set_to" name="PATH_DRISEE">$INSTALL_DIR/DRISEE-1.2</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+</tool_dependency>

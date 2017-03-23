@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="blast" version="2.2.22">
+        <install version="1.0">
+            <actions>
+            	<action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv ftp://ftp.ncbi.nlm.nih.gov/blast/executables/release/2.2.22/blast-2.2.22-x64-linux.tar.gz -O blast-2.2.22-x64-linux.tar.gz </action>
+                <action type="shell_command">tar xfz blast-2.2.22-x64-linux.tar.gz</action>
+                <action type="shell_command">rm blast-2.2.22-x64-linux.tar.gz</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/blast-2.2.22/bin</environment_variable>
+                    <environment_variable action="set_to" name="PATH_BLAST">$INSTALL_DIR/blast-2.2.22/bin</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+</tool_dependency>

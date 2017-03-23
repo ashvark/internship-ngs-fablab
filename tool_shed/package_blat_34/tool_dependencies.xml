@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="blat" version="34">
+        <install version="1.0">
+            <actions>
+                <action type="change_directory">$TMP_WORK_DIR</action>
+                <action type="shell_command">wget -q --no-check-certificate http://hgwdev.cse.ucsc.edu/~kent/exe/linux/blatSuite.34.zip -O blatSuite.34.zip</action>
+                <action type="shell_command">unzip -qq -o blatSuite.34.zip</action>
+                <action type="change_directory">$TMP_WORK_DIR/blat-34</action>
+                <action type="move_directory_files">
+                    <source_directory>.</source_directory>
+                    <destination_directory>$INSTALL_DIR</destination_directory>
+                </action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/</environment_variable>
+                    <environment_variable action="set_to" name="PATH_BLAT">$INSTALL_DIR</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+</tool_dependency>

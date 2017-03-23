@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="python" version="2.7.10">
+        <repository name="package_python_2_7_10" owner="avaradha" prior_installation_required="True" />
+    </package>
+    <package name="pyqi" version="0.3.2">
+        <install version="1.0">
+            <actions>
+                <action type="setup_python_environment">
+                   <repository name="package_python_2_7_10" owner="avaradha" >
+                       <package name="python" version="2.7.10" />
+                   </repository>
+                    <!-- allow downloading and installing an Python package from https://pypi.org/ -->
+                    <package>https://pypi.python.org/packages/source/p/pyqi/pyqi-0.3.2.tar.gz#md5=9507c06eeb22a816d963c860ad8e92ae</package>
+                </action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PYTHONPATH">$INSTALL_DIR</environment_variable>
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/bin</environment_variable>
+                    <environment_variable action="set_to" name="PYTHONPATH_PYQI">$INSTALL_DIR</environment_variable>
+                    <environment_variable action="set_to" name="PATH_PYQI">$INSTALL_DIR/bin</environment_variable>
+                    <environment_variable action="set_to" name="PYQI_ROOT_DIR">$INSTALL_DIR</environment_variable>
+                </action>
+            </actions>
+        </install>
+        <readme>
+            pyqi’s only requirement is a working Python 2.7 installation.
+        </readme>
+    </package>
+</tool_dependency>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="infernal" version="1.0.2">
+        <install version="1.0">
+            <actions>
+            	<action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv ftp://selab.janelia.org/pub/software/infernal/infernal-1.0.2.tar.gz -O infernal-1.0.2.tar.gz </action>
+                <action type="shell_command">tar xfz infernal-1.0.2.tar.gz</action>
+                <action type="shell_command">rm infernal-1.0.2.tar.gz</action>
+                <action type="change_directory">infernal-1.0.2</action>
+                <action type="shell_command">./configure</action>
+                <action type="shell_command">make</action>
+                <action type="shell_command">make install prefix=$INSTALL_DIR/infernal-1.0.2</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/infernal-1.0.2/bin</environment_variable>
+                    <environment_variable action="set_to" name="PATH_INFERNAL">$INSTALL_DIR/infernal-1.0.2/bin</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+</tool_dependency>

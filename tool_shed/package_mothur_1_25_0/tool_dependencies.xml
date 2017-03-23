@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="mothur" version="1.25.0">
+        <install version="1.0">
+            <actions>
+            	<action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv ftp://ftp.microbio.me/pub/QIIME-v1.6.0-dependencies/mothur-1.25.0.tar.gz -O mothur-1.25.0.tar.gz </action>
+                <action type="shell_command">tar xfz mothur-1.25.0.tar.gz</action>
+                <action type="shell_command">rm mothur-1.25.0.tar.gz</action>
+                <action type="change_directory">mothur-1.25.0</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/mothur-1.25.0</environment_variable>
+                    <environment_variable action="set_to" name="PATH_MOTHUR">$INSTALL_DIR/mothur-1.25.0</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+</tool_dependency>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="apache-ant" version="1.9.6">
+        <repository name="package_apache_ant_1_9_6" owner="avaradha" prior_installation_required="True" />
+    </package>
+    <package name="cytoscape" version="2.7.0">
+        <install version="1.0">
+            <actions>
+                <action type="set_environment_for_install">
+                    <repository name="package_apache_ant_1_9_6" owner="avaradha" >
+                        <package name="apache-ant" version="1.9.6" />
+                    </repository>
+                </action>
+            	<action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv http://chianti.ucsd.edu/Cyto-2_7_0/cytoscapeSource-v2.7.0.tar.gz -O cytoscapeSource-v2.7.0.tar.gz </action>
+                <action type="make_directory">$INSTALL_DIR/cytoscapeSource-2.7.0</action>
+                <action type="shell_command">tar xfz cytoscapeSource-v2.7.0.tar.gz -C $INSTALL_DIR/cytoscapeSource-2.7.0</action>
+                <action type="shell_command">rm cytoscapeSource-v2.7.0.tar.gz</action>
+                <action type="change_directory">cytoscapeSource-2.7.0</action>
+                <action type="shell_command">ant</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/cytoscapeSource-2.7.0</environment_variable>
+                    <environment_variable action="set_to" name="PATH_CYTOSCAPE">$INSTALL_DIR/cytoscapeSource-2.7.0</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+</tool_dependency>

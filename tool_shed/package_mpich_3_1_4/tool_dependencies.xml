@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="mpich" version="3.1.4">
+        <install version="1.0">
+            <actions>
+                <action type="download_by_url">http://www.mpich.org/static/downloads/3.1.4/mpich-3.1.4.tar.gz</action>
+                <action type="shell_command">./configure --enable-shared --prefix $INSTALL_DIR </action>
+                <action type="shell_command">make</action>
+                <action type="shell_command">make install</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/bin</environment_variable>
+                    <environment_variable action="prepend_to" name="LIBRARY_PATH">$INSTALL_DIR/lib</environment_variable>
+                    <environment_variable action="prepend_to" name="LD_LIBRARY_PATH">$INSTALL_DIR/lib</environment_variable>
+                    <environment_variable action="prepend_to" name="CPATH">$INSTALL_DIR/include</environment_variable>
+                    <environment_variable name="C_INCLUDE_PATH" action="prepend_to">$INSTALL_DIR/include</environment_variable>
+                    <environment_variable name="CPLUS_INCLUDE_PATH" action="prepend_to">$INSTALL_DIR/include</environment_variable>
+                    <environment_variable action="set_to" name="PATH_MPICH">$INSTALL_DIR/bin</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+</tool_dependency>

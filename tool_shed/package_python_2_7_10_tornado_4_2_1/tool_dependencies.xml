@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="python" version="2.7.10">
+        <repository name="package_python_2_7_10" owner="avaradha" prior_installation_required="True" />
+    </package>
+    <package name="tornado" version="4.2.1">
+        <install version="1.0">
+            <actions>
+                <action type="setup_python_environment">
+                   <repository name="package_python_2_7_10" owner="avaradha" >
+                       <package name="python" version="2.7.10" />
+                   </repository>
+                    <!-- allow downloading and installing an Python package from https://pypi.org/ -->
+                    <package>https://pypi.python.org/packages/source/t/tornado/tornado-4.2.1.tar.gz</package>
+                </action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PYTHONPATH">$INSTALL_DIR</environment_variable>
+                    <environment_variable action="set_to" name="PYTHONPATH_TORNADO">$INSTALL_DIR</environment_variable>
+                    <environment_variable action="set_to" name="TORNADO_ROOT_DIR">$INSTALL_DIR</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+</tool_dependency>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="apache-ant" version="1.9.6">
+        <install version="1.0">
+            <actions>
+            	<action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv http://apache.mirror.digionline.de//ant/binaries/apache-ant-1.9.6-bin.tar.gz -O apache-ant-1.9.6-bin.tar.gz </action>
+                <action type="shell_command">tar xfz apache-ant-1.9.6-bin.tar.gz</action>
+                <action type="shell_command">rm apache-ant-1.9.6-bin.tar.gz</action>
+                <action type="change_directory">apache-ant-1.9.6</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/apache-ant-1.9.6/bin</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+</tool_dependency>

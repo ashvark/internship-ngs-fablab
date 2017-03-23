@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="chimeraslayer" version="04.29.2010">
+        <install version="1.0">
+            <actions>
+            	<action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv http://sourceforge.net/projects/microbiomeutil/files/__OLD_VERSIONS/microbiomeutil_2010-04-29.tar.gz -O microbiomeutil_2010-04-29.tar.gz </action>
+                <action type="shell_command">tar xfz microbiomeutil_2010-04-29.tar.gz</action>
+                <action type="shell_command">rm microbiomeutil_2010-04-29.tar.gz</action>
+                <action type="change_directory">microbiomeutil_2010-04-29</action>
+                <action type="shell_command">make</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/microbiomeutil_2010-04-29/ChimeraSlayer</environment_variable>
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/microbiomeutil_2010-04-29/NAST-iEr</environment_variable>
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/microbiomeutil_2010-04-29/WigeoN</environment_variable>
+                    <environment_variable action="set_to" name="PATH_CHIMERSLAYER">$INSTALL_DIR/microbiomeutil_2010-04-29/ChimeraSlayer</environment_variable>
+                    <environment_variable action="set_to" name="PATH_NAST">$INSTALL_DIR/microbiomeutil_2010-04-29/NAST-iEr</environment_variable>
+                    <environment_variable action="set_to" name="PATH_WIGEON">$INSTALL_DIR/microbiomeutil_2010-04-29/WigeoN</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+</tool_dependency>

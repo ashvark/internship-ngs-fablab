@@ -1,0 +1,691 @@
+<?xml version="1.0"?>
+<tool_dependency>
+
+    <package name="apache-ant" version="1.9.6">
+        <repository name="package_apache_ant_1_9_6" owner="ashok" prior_installation_required="True" />
+    </package>
+    <!--Dependancy for Ampliconnoise-->
+    <package name="openmpi" version="1.8.8">
+        <repository name="package_openmpi_1_8_8" owner="ashok" prior_installation_required="True" />
+    </package>
+    <!--Dependancy for Ampliconnoise and Eautils-->
+    <package name="gsl" version="1.16">
+        <repository name="package_gsl_1_16" owner="ashok" prior_installation_required="True" />
+    </package>
+
+    <package name="python" version="2.7.10">
+        <repository name="package_python_2_7_10" owner="ashok" prior_installation_required="True" />
+    </package>
+    <!--Dependancy for Numpy and scipy package-->
+    <package name="atlas" version="3.10.2">
+        <repository name="package_atlas_3_10" owner="ashok" prior_installation_required="True" />
+    </package>
+    <!--Dependancy for scipy package-->
+    <package name="lapack" version="3.5.0">
+        <repository name="package_lapack_3_5_0" owner="ashok" prior_installation_required="True"  />
+    </package>
+    <!--Dependancy for h5py package-->
+    <package name="hdf5" version="1.8.12">
+        <repository name="package_hdf5_1_8_12" owner="ashok" prior_installation_required="True"  />
+    </package>
+    <!--Dependancy for matplotlib package-->
+    <package name="freetype" version="2.5.2">
+        <repository name="package_freetype_2_5_2" owner="ashok" prior_installation_required="True"  />
+    </package>
+    <!--Dependancy for matplotlib package-->
+    <package name="libpng" version="1.6.7">
+        <repository name="package_libpng_1_6_7" owner="ashok" prior_installation_required="True"  />
+    </package>
+    <!--Dependancy for matplotlib package-->
+    <package name="zlib" version="1.2.8">
+        <repository name="package_zlib_1_2_8" owner="ashok" prior_installation_required="True"  />
+    </package>
+    <!--Dependancy for pysqlite package-->
+    <package name="sqlite" version="3.8.3">
+        <repository name="package_sqlite_3_8_3" owner="ashok" prior_installation_required="True"  />
+    </package>
+    <!--Dependancy for R modules-->
+    <package name="R" version="3.1.2">
+        <repository name="package_r_3_1_2" owner="ashok" prior_installation_required="True" />
+    </package>
+
+    <!--Dependancy for mpi4py package-->
+    <package name="mpich" version="3.1.4">
+        <repository name="package_mpich_3_1_4" owner="ashok" prior_installation_required="True" />
+    </package>
+     <!--Dependancy for mpi4py package-->
+     <package name="mpe2" version="2.4.8">
+        <repository name="package_mpe2_2_4_8" owner="ashok" prior_installation_required="True" />
+    </package>
+
+    <package name="uclust" version="1.2.22">
+        <install version="1.0">
+            <actions>
+                <action type="download_file">http://drive5.com/uclust/uclustq1.2.22_i86linux64</action>
+                <action type="move_file" rename_to="uclust">
+                    <source>uclustq1.2.22_i86linux64</source>
+                    <destination>$INSTALL_DIR/bin/</destination>
+                </action>
+                <action type="chmod">
+                    <file mode="755">$INSTALL_DIR/bin/uclust</file>
+                </action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/bin</environment_variable>
+                    <environment_variable action="set_to" name="PATH_UCLUST">$INSTALL_DIR/bin</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+
+    <package name="zeromq" version="4.1.3">
+        <install version="1.0">
+            <actions>
+                <action type="download_by_url">http://download.zeromq.org/zeromq-4.1.3.tar.gz</action>
+                <action type="shell_command">./configure prefix=$INSTALL_DIR --without-libsodium</action>
+                <action type="shell_command">make</action>
+                <action type="shell_command">make install</action>
+                <action type="set_environment">
+                    <environment_variable name="PATH" action="prepend_to">$INSTALL_DIR/bin</environment_variable>
+                    <environment_variable action="prepend_to" name="LD_LIBRARY_PATH">$INSTALL_DIR/lib</environment_variable>
+                    <environment_variable name="C_INCLUDE_PATH" action="prepend_to">$INSTALL_DIR/include</environment_variable>
+                    <environment_variable name="CPLUS_INCLUDE_PATH" action="prepend_to">$INSTALL_DIR/include</environment_variable>
+                    <environment_variable action="set_to" name="PATH_ZEROMQ">$INSTALL_DIR/bin</environment_variable>
+                    <environment_variable action="set_to" name="ZEROMQ_LIB_DIR">$INSTALL_DIR/lib</environment_variable>
+                    <environment_variable action="set_to" name="ZEROMQ_ROOT_DIR">$INSTALL_DIR</environment_variable>
+                </action>
+            </actions>    
+        </install>
+    </package>
+    <package name="FastTree" version="2.17">
+        <install version="1.0">
+           <actions_group>
+           <!-- Download the executable for 64-bit OSX. -->
+             <actions os="linux" architecture="x86_64">
+                <action type="download_by_url">http://www.microbesonline.org/fasttree/FastTree</action>
+                    <action type="move_file">
+                    <source>FastTree</source>
+                    <destination>$INSTALL_DIR/fasttree</destination>
+                </action>
+                    <action type="shell_command">chmod ugo+x $INSTALL_DIR/fasttree/FastTree</action>
+                <action type="set_environment">
+                    <environment_variable name="PATH" action="prepend_to">$INSTALL_DIR/fasttree</environment_variable>
+                    <environment_variable name="PATH_FASTTREE" action="set_to">$INSTALL_DIR/fasttree</environment_variable>
+                </action>
+              </actions>
+              <!-- This actions tag is only processed if tried to install on a none-linux-64-bit system. -->
+              <actions>
+                <action type="shell_command">echo ERROR: Automated installation on your operating system and CPU architecture combination is not yet supported. This version of FastTree is just intended for Linux 64-bit systems.</action>
+              </actions>
+            </actions_group>
+        </install>
+    </package>
+    <package name="cdbfasta" version="10.11.2010">
+        <install version="1.0">
+            <actions>
+                <action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv ftp://occams.dfci.harvard.edu/pub/bio/tgi/software/cdbfasta/cdbfasta.tar.gz -O cdbfasta-10.11.2010.tar.gz </action>
+                <action type="shell_command">tar xfz cdbfasta-10.11.2010.tar.gz</action>
+                <action type="shell_command">rm cdbfasta-10.11.2010.tar.gz</action>
+                <action type="change_directory">cdbfasta</action>
+                <action type="shell_command">make</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/cdbfasta</environment_variable>
+                    <environment_variable action="set_to" name="PATH_CDBFASTA">$INSTALL_DIR/cdbfasta</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+    <package name="chimeraslayer" version="04.29.2010">
+        <install version="1.0">
+            <actions>
+                <action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv http://sourceforge.net/projects/microbiomeutil/files/__OLD_VERSIONS/microbiomeutil_2010-04-29.tar.gz -O microbiomeutil_2010-04-29.tar.gz </action>
+                <action type="shell_command">tar xfz microbiomeutil_2010-04-29.tar.gz</action>
+                <action type="shell_command">rm microbiomeutil_2010-04-29.tar.gz</action>
+                <action type="change_directory">microbiomeutil_2010-04-29</action>
+                <action type="shell_command">make</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/microbiomeutil_2010-04-29/ChimeraSlayer</environment_variable>
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/microbiomeutil_2010-04-29/NAST-iEr</environment_variable>
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/microbiomeutil_2010-04-29/WigeoN</environment_variable>
+                    <environment_variable action="set_to" name="PATH_CHIMERSLAYER">$INSTALL_DIR/microbiomeutil_2010-04-29/ChimeraSlayer</environment_variable>
+                    <environment_variable action="set_to" name="PATH_NAST">$INSTALL_DIR/microbiomeutil_2010-04-29/NAST-iEr</environment_variable>
+                    <environment_variable action="set_to" name="PATH_WIGEON">$INSTALL_DIR/microbiomeutil_2010-04-29/WigeoN</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+    <package name="cdhit" version="3.1">
+        <install version="1.0">
+            <actions>
+                <action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv ftp://ftp.microbio.me/pub/QIIME-v1.5.0-dependencies/cd-hit-2007-0131.tgz -O cd-hit-3.1.tgz </action>
+                <action type="shell_command">tar xfz cd-hit-3.1.tgz</action>
+                 <action type="shell_command">rm cd-hit-3.1.tgz</action>
+                <action type="change_directory">cd-hit</action>
+                <action type="shell_command">make</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/cd-hit</environment_variable>
+                    <environment_variable action="set_to" name="PATH_CDHIT">$INSTALL_DIR/cd-hit</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+    <package name="rdpclassifier" version="2.2">
+        <install version="1.0">
+            <actions>
+                <action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv http://sourceforge.net/projects/rdp-classifier/files/rdp-classifier/rdp_classifier_2.2.zip -O rdp_classifier_2.2.zip </action>
+                <action type="shell_command">unzip -qq -o rdp_classifier_2.2.zip</action>
+                <action type="shell_command">rm rdp_classifier_2.2.zip</action>
+                <action type="change_directory">rdp_classifier_2.2</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/rdp_classifier_2.2</environment_variable>
+                    <environment_variable action="set_to" name="PATH_RDPCLASSIFIER">$INSTALL_DIR/rdp_classifier_2.2</environment_variable>
+                    <environment_variable name="RDP_JAR_PATH" action="set_to">$INSTALL_DIR/rdp_classifier_2.2/rdp_classifier-2.2.jar</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+    <package name="blast" version="2.2.22">
+        <install version="1.0">
+            <actions>
+                <action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv ftp://ftp.ncbi.nlm.nih.gov/blast/executables/release/2.2.22/blast-2.2.22-x64-linux.tar.gz -O blast-2.2.22-x64-linux.tar.gz </action>
+                <action type="shell_command">tar xfz blast-2.2.22-x64-linux.tar.gz</action>
+                <action type="shell_command">rm blast-2.2.22-x64-linux.tar.gz</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/blast-2.2.22/bin</environment_variable>
+                    <environment_variable action="set_to" name="PATH_BLAST">$INSTALL_DIR/blast-2.2.22/bin</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+    <package name="muscle" version="3.8.31">
+        <install version="1.0">
+            <actions>
+                <action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv http://www.drive5.com/muscle/downloads3.8.31/muscle3.8.31_i86linux64.tar.gz -O muscle3.8.31_i86linux64.tar.gz </action>
+                <action type="shell_command">tar xfz muscle3.8.31_i86linux64.tar.gz</action>
+                <action type="shell_command">rm muscle3.8.31_i86linux64.tar.gz</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR</environment_variable>
+                    <environment_variable action="set_to" name="PATH_MUSCLE">$INSTALL_DIR</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+    <package name="infernal" version="1.0.2">
+        <install version="1.0">
+            <actions>
+                <action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv ftp://selab.janelia.org/pub/software/infernal/infernal-1.0.2.tar.gz -O infernal-1.0.2.tar.gz </action>
+                <action type="shell_command">tar xfz infernal-1.0.2.tar.gz</action>
+                <action type="shell_command">rm infernal-1.0.2.tar.gz</action>
+                <action type="change_directory">infernal-1.0.2</action>
+                <action type="shell_command">./configure</action>
+                <action type="shell_command">make</action>
+                <action type="shell_command">make install prefix=$INSTALL_DIR/infernal-1.0.2</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/infernal-1.0.2/bin</environment_variable>
+                    <environment_variable action="set_to" name="PATH_INFERNAL">$INSTALL_DIR/infernal-1.0.2/bin</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+    <package name="cytoscape" version="2.7.0">
+        <install version="1.0">
+            <actions>
+                <action type="set_environment_for_install">
+                    <repository name="package_apache_ant_1_9_6" owner="ashok" >
+                        <package name="apache-ant" version="1.9.6" />
+                    </repository>
+                </action>
+                <action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv http://chianti.ucsd.edu/Cyto-2_7_0/cytoscapeSource-v2.7.0.tar.gz -O cytoscapeSource-v2.7.0.tar.gz </action>
+                <action type="make_directory">$INSTALL_DIR/cytoscapeSource-2.7.0</action>
+                <action type="shell_command">tar xfz cytoscapeSource-v2.7.0.tar.gz -C $INSTALL_DIR/cytoscapeSource-2.7.0</action>
+                <action type="shell_command">rm cytoscapeSource-v2.7.0.tar.gz</action>
+                <action type="change_directory">cytoscapeSource-2.7.0</action>
+                <action type="shell_command">ant</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/cytoscapeSource-2.7.0</environment_variable>
+                    <environment_variable action="set_to" name="PATH_CYTOSCAPE">$INSTALL_DIR/cytoscapeSource-2.7.0</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+    <package name="clearcut" version="1.0.9">
+        <install version="1.0">
+            <actions>
+                <action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv http://bioinformatics.hungry.com/clearcut/clearcut-1.0.9.tar.gz -O clearcut-1.0.9.tar.gz </action>
+                <action type="shell_command">tar xfz clearcut-1.0.9.tar.gz</action>
+                <action type="shell_command">rm clearcut-1.0.9.tar.gz</action>
+                <action type="change_directory">clearcut-1.0.9</action>
+                <action type="shell_command">make</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/clearcut-1.0.9</environment_variable>
+                    <environment_variable action="set_to" name="PATH_CLEARCUT">$INSTALL_DIR/clearcut-1.0.9</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+    <package name="vienna" version="1.8.4">
+        <install version="1.0">
+            <actions>
+                <action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv http://www.tbi.univie.ac.at/RNA/packages/source/ViennaRNA-1.8.4.tar.gz -O ViennaRNA-1.8.4.tar.gz </action>
+                <action type="shell_command">tar xfz ViennaRNA-1.8.4.tar.gz</action>
+                <action type="shell_command">rm ViennaRNA-1.8.4.tar.gz</action>
+                <action type="change_directory">ViennaRNA-1.8.4</action>
+                <action type="shell_command">./configure --without-perl --prefix=$INSTALL_DIR/ViennaRNA-1.8.4/vienna</action>
+                <action type="shell_command">make</action>
+                <action type="shell_command">make install</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/ViennaRNA-1.8.4/vienna/bin</environment_variable>
+                    <environment_variable action="set_to" name="PATH_VIENNA">$INSTALL_DIR/ViennaRNA-1.8.4/vienna/bin</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+
+    <package name="parseinsert" version="1.0.4">
+        <install version="1.0">
+            <actions>
+                <action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv http://downloads.sourceforge.net/project/parsinsert/ParsInsert.1.04.tgz -O ParsInsert.1.04.tgz </action>
+                <action type="shell_command">tar xfz ParsInsert.1.04.tgz</action>
+                <action type="shell_command">rm ParsInsert.1.04.tgz</action>
+                <action type="shell_command">make</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR</environment_variable>
+                    <environment_variable action="set_to" name="PATH_PARSEINSERT">$INSTALL_DIR</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+
+    <package name="mothur" version="1.25.0">
+        <install version="1.0">
+            <actions>
+                <action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv ftp://ftp.microbio.me/pub/QIIME-v1.6.0-dependencies/mothur-1.25.0.tar.gz -O mothur-1.25.0.tar.gz </action>
+                <action type="shell_command">tar xfz mothur-1.25.0.tar.gz</action>
+                <action type="shell_command">rm mothur-1.25.0.tar.gz</action>
+                <action type="change_directory">mothur-1.25.0</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/mothur-1.25.0</environment_variable>
+                    <environment_variable action="set_to" name="PATH_MOTHUR">$INSTALL_DIR/mothur-1.25.0</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+
+    <package name="ampliconnoise" version="1.27">
+        <install version="1.0">
+            <actions>
+                <action type="set_environment_for_install">
+                    <repository name="package_openmpi_1_8_8" owner="ashok" >
+                        <package name="openmpi" version="1.8.8" />
+                    </repository>
+                    <repository name="package_gsl_1_16" owner="ashok" >
+                        <package name="gsl" version="1.16" />
+                    </repository>
+                </action>
+                <action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv http://ampliconnoise.googlecode.com/files/AmpliconNoiseV1.27.tar.gz -O AmpliconNoiseV1.27.tar.gz </action>
+                <action type="shell_command">tar xfz AmpliconNoiseV1.27.tar.gz</action>
+                <action type="shell_command">rm AmpliconNoiseV1.27.tar.gz</action>
+                <action type="change_directory">AmpliconNoiseV1.27</action>
+                <action type="shell_command">make clean</action>
+                <action type="shell_command">make</action>
+                <action type="shell_command">make install</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/AmpliconNoiseV1.27/bin</environment_variable>
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/AmpliconNoiseV1.27/Scripts</environment_variable>
+                    <environment_variable action="set_to" name="PATH_AMPLICON_BIN">$INSTALL_DIR/AmpliconNoiseV1.27/bin</environment_variable>
+                    <environment_variable action="set_to" name="PATH_AMPLICON_SCRIPTS">$INSTALL_DIR/AmpliconNoiseV1.27/Scripts</environment_variable>
+                    <environment_variable name="AMPLICON_NOISE_HOME" action="set_to">$INSTALL_DIR/AmpliconNoiseV1.27</environment_variable>
+                    <environment_variable name="PYRO_LOOKUP_FILE" action="set_to">$INSTALL_DIR/AmpliconNoiseV1.27/Data/LookUp_Titanium.dat</environment_variable>
+                    <environment_variable name="SEQ_LOOKUP_FILE" action="set_to">$INSTALL_DIR/AmpliconNoiseV1.27/Data/Tran.dat</environment_variable>
+                </action>
+            </actions>
+        </install>
+        <readme>
+            Dependancy package: mpicc,gsl
+        </readme>
+    </package>
+    <package name="rtax" version="0.984">
+        <install version="1.0">
+            <actions>
+                <action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv http://static.davidsoergel.com/rtax-0.984.tgz -O rtax-0.984.tgz </action>
+                <action type="shell_command">tar xfz rtax-0.984.tgz</action>
+                <action type="shell_command">rm rtax-0.984.tgz</action>
+                <action type="change_directory">rtax-0.984</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/rtax-0.984</environment_variable>
+                    <environment_variable action="set_to" name="PATH_RTAX">$INSTALL_DIR/rtax-0.984</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+    <package name="drisee" version="1.2">
+        <install version="1.0">
+            <actions>
+                <action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv https://github.com/MG-RAST/DRISEE/archive/v1.2.tar.gz -O drisee-1.2.tar.gz </action>
+                <action type="shell_command">tar xfz drisee-1.2.tar.gz</action>
+                <action type="shell_command">rm drisee-1.2.tar.gz</action>
+                <action type="change_directory">DRISEE-1.2</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/DRISEE-1.2</environment_variable>
+                    <environment_variable action="set_to" name="PATH_DRISEE">$INSTALL_DIR/DRISEE-1.2</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+    <package name="blat" version="34">
+        <install version="1.0">
+            <actions>
+                <action type="change_directory">$TMP_WORK_DIR</action>
+                <action type="shell_command">wget -q --no-check-certificate http://hgwdev.cse.ucsc.edu/~kent/exe/linux/blatSuite.34.zip -O blatSuite.34.zip</action>
+                <action type="shell_command">unzip -qq -o blatSuite.34.zip</action>
+                <action type="change_directory">$TMP_WORK_DIR/blat-34</action>
+                <action type="move_directory_files">
+                    <source_directory>.</source_directory>
+                    <destination_directory>$INSTALL_DIR</destination_directory>
+                </action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/</environment_variable>
+                    <environment_variable action="set_to" name="PATH_BLAT">$INSTALL_DIR</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+    <package name="bwa" version="0.6.2">
+        <install version="1.0">
+            <actions>
+                <action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv http://downloads.sourceforge.net/project/bio-bwa/bwa-0.6.2.tar.bz2 -O bwa-0.6.2.tar.bz2 </action>
+                <action type="shell_command">tar jxf bwa-0.6.2.tar.bz2</action>
+                <action type="shell_command">rm bwa-0.6.2.tar.bz2</action>
+                <action type="change_directory">bwa-0.6.2</action>
+                <action type="shell_command">make</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/bwa-0.6.2</environment_variable>
+                    <environment_variable action="set_to" name="PATH_BWA">$INSTALL_DIR/bwa-0.6.2</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+    <package name="sourcetracker" version="1.0.0">
+        <install version="1.0">
+            <actions>
+                <action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv https://github.com/danknights/sourcetracker/archive/sourcetracker-0.9.5.tar.gz -O sourcetracker-0.9.5.tar.gz </action>
+                <action type="shell_command">tar xfz sourcetracker-0.9.5.tar.gz</action>
+                <action type="shell_command">rm sourcetracker-0.9.5.tar.gz</action>
+                <action type="change_directory">sourcetracker-sourcetracker-0.9.5</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/sourcetracker-sourcetracker-0.9.5</environment_variable>
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/sourcetracker-sourcetracker-0.9.5/src</environment_variable>
+
+                    <environment_variable name="SOURCETRACKER_PATH" action="set_to">$INSTALL_DIR/sourcetracker-sourcetracker-0.9.5</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+    <package name="eautils" version="1.1.2">
+        <install version="1.0">
+            <actions>
+                <action type="set_environment_for_install">
+                    <repository name="package_gsl_1_16" owner="ashok" >
+                        <package name="gsl" version="1.16" />
+                    </repository>
+                </action>
+                <action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv https://ea-utils.googlecode.com/files/ea-utils.1.1.2-537.tar.gz -O ea-utils.1.1.2-537.tar.gz </action>
+                <action type="shell_command">tar xfz ea-utils.1.1.2-537.tar.gz</action>
+                <action type="shell_command">rm ea-utils.1.1.2-537.tar.gz</action>
+                <action type="change_directory">ea-utils.1.1.2-537</action>
+                <action type="shell_command">make</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/ea-utils.1.1.2-537</environment_variable>
+                    <environment_variable action="set_to" name="PATH_EAUTILS">$INSTALL_DIR/ea-utils.1.1.2-537</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+    <package name="seqprep" version="1.1">
+        <install version="1.0">
+            <actions>
+                <action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv https://github.com/jstjohn/SeqPrep/archive/v1.1.tar.gz -O seqprep-1.1.tar.gz </action>
+                <action type="shell_command">tar zxf seqprep-1.1.tar.gz</action>
+                <action type="shell_command">rm seqprep-1.1.tar.gz</action>
+                <action type="change_directory">SeqPrep-1.1</action>
+                <action type="shell_command">make</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/SeqPrep-1.1</environment_variable>
+                    <environment_variable action="set_to" name="PATH_SEQPREP">$INSTALL_DIR/SeqPrep-1.1</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+    <package name="raxml" version="7.3.0">
+        <install version="1.0">
+            <actions>
+                <action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv ftp://ftp.microbio.me/pub/QIIME-v1.5.0-dependencies/stamatak-standard-RAxML-5_7_2012.tgz -O raxml-7.3.0.tgz </action>
+                <action type="shell_command">tar xfz raxml-7.3.0.tgz</action>
+                <action type="shell_command">rm raxml-7.3.0.tgz</action>
+                <action type="shell_command">mv stamatak-standard-RAxML-5_7_2012 raxml-7.3.0</action>
+                <action type="change_directory">raxml-7.3.0</action>
+                <action type="shell_command">make -f Makefile.gcc</action>
+                <action type="move_file">
+                    <source>raxmlHPC</source>
+                    <destination>$INSTALL_DIR/raxml-7.3.0/bin</destination>
+                </action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/raxml-7.3.0/bin</environment_variable>
+                    <environment_variable action="prepend_to" name="PATH_RAXML">$INSTALL_DIR/raxml-7.3.0/bin</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+    <package name="muscle" version="3.8.31">
+        <install version="1.0">
+            <actions>
+                <action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv http://www.drive5.com/muscle/downloads3.8.31/muscle3.8.31_i86linux64.tar.gz -O muscle3.8.31_i86linux64.tar.gz </action>
+                <action type="shell_command">tar xfz muscle3.8.31_i86linux64.tar.gz</action>
+                <action type="shell_command">rm muscle3.8.31_i86linux64.tar.gz</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR</environment_variable>
+                    <environment_variable action="set_to" name="PATH_MUSCLE">$INSTALL_DIR</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+    <package name="qiime_python_dep" version="1.9.1">
+        <install version="1.0">
+            <actions>
+                <action type="setup_python_environment">
+                   <repository name="package_python_2_7_10" owner="ashok" >
+                       <package name="python" version="2.7.10" />
+                   </repository>
+                    <repository name="package_atlas_3_10" owner="ashok" >
+                        <package name="atlas" version="3.10.2" />
+                    </repository>
+                    <repository name="package_lapack_3_5_0" owner="ashok" >
+                        <package name="lapack" version="3.5.0" />
+                    </repository>
+                    <repository name="package_hdf5_1_8_12" owner="ashok" >
+                        <package name="hdf5" version="1.8.12" />
+                    </repository>
+                    <repository name="package_zlib_1_2_8" owner="ashok" >
+                        <package name="zlib" version="1.2.8" />
+                    </repository>
+                    <repository name="package_freetype_2_5_2" owner="ashok" >
+                        <package name="freetype" version="2.5.2" />
+                    </repository>
+                    <repository name="package_libpng_1_6_7" owner="ashok" >
+                        <package name="libpng" version="1.6.7" />
+                    </repository>
+                    <repository name="package_mpich_3_1_4" owner="ashok" >
+                        <package name="mpich" version="3.1.4" />
+                    </repository>
+                   <repository name="package_mpe2_2_4_8" owner="ashok" >
+                       <package name="mpe2" version="2.4.8" />
+                   </repository>
+                   <repository name="package_sqlite_3_8_3" owner="ashok" >
+                       <package name="sqlite" version="3.8.3" />
+                   </repository>
+
+                    <!-- allow downloading and installing an Python package from https://pypi.org/ -->
+                    <package>https://pypi.python.org/packages/source/n/numpy/numpy-1.9.1.tar.gz</package>
+                    <package>https://pypi.python.org/packages/source/p/pyqi/pyqi-0.3.2.tar.gz</package>
+                    <package>https://pypi.python.org/packages/source/s/scipy/scipy-0.14.1.tar.gz#md5#1bfedd3197b3e3f8cd131ae2c06a1bf5</package>
+                    <package>https://pypi.python.org/packages/source/C/Cython/Cython-0.23.1.tar.gz</package>
+                    <package>https://pypi.python.org/packages/source/h/h5py/h5py-2.5.0.tar.gz</package>
+                    <package>https://pypi.python.org/packages/source/s/scikit-bio/scikit-bio-0.2.3.tar.gz</package>
+                    <package>https://pypi.python.org/packages/source/q/qcli/qcli-0.1.1.tar.gz#md5=25b7bc209c1e52be16efad295bd37ed4</package>
+                    <package>https://pypi.python.org/packages/source/e/emperor/emperor-0.9.51.tar.gz</package>
+                    <package>https://pypi.python.org/packages/source/b/biom-format/biom-format-2.1.4.tar.gz#md5=f949d1aef3d17d022dbc7105ade1851e</package>
+                    <package>http://downloads.sourceforge.net/project/pycogent/PyCogent/1.5/PyCogent-1.5.tgz</package>
+                    <package>https://pypi.python.org/packages/source/p/pynast/pynast-1.2.2.tar.gz</package>
+                    <package>https://pypi.python.org/packages/source/f/future/future-0.15.0.tar.gz</package>
+                    <package>https://pypi.python.org/packages/source/p/pytz/pytz-2015.4.tar.gz#md5=417a47b1c432d90333e42084a605d3d8</package>
+                    <package>https://pypi.python.org/packages/source/n/natsort/natsort-3.5.6.tar.gz#md5=389d2c8da13fd83f9d9d47bab5cba629</package>
+                    <package>https://pypi.python.org/packages/source/g/gdata/gdata-2.0.18.tar.gz#md5=13b6e6dd8f9e3e9a8e005e05a8329408</package>
+                    <package>https://pypi.python.org/packages/source/i/ipython/ipython-4.0.0.tar.gz#md5=c2fecbcf1c0fbdc82625c77a50733dd6</package>
+                    <package>https://pypi.python.org/packages/source/i/ipython_genutils/ipython_genutils-0.1.0.tar.gz#md5=9a8afbe0978adbcbfcb3b35b2d015a56</package>
+                    <package>https://pypi.python.org/packages/source/s/six/six-1.9.0.tar.gz#md5#476881ef4012262dfc8adc645ee786c4</package>
+                    <package>https://pypi.python.org/packages/source/m/matplotlib/matplotlib-1.4.3.tar.gz#md5=86af2e3e3c61849ac7576a6f5ca44267</package>
+                    <package>https://pypi.python.org/packages/source/m/mpi4py/mpi4py-1.3.1.tar.gz#md5=dbe9d22bdc8ed965c23a7ceb6f32fc3c</package>
+                    <package>https://pypi.python.org/packages/source/M/MySQL-python/MySQL-python-1.2.3.tar.gz#md5=215eddb6d853f6f4be5b4afc4154292f</package>
+                    <!-- <package>http://downloads.sourceforge.net/project/pprospector/pprospector-1.0.1.tar.gz</package> -->
+                    <package>https://pypi.python.org/packages/source/p/pysqlite/pysqlite-2.8.1.tar.gz#md5=7a062cbd146eec630a575f099b0c2eaf</package>
+                    <package>https://pypi.python.org/packages/source/S/Sphinx/Sphinx-1.3.1.tar.gz#md5=8786a194acf9673464c5455b11fd4332</package>
+                    <package>https://pypi.python.org/packages/source/S/SQLAlchemy/SQLAlchemy-1.0.8.tar.gz</package>
+                    <package>https://pypi.python.org/packages/source/t/tree2tax/tree2tax-0.1.3.tar.gz</package>
+                    <package>https://pypi.python.org/packages/source/t/tmdb3/tmdb3-0.7.2.tar.gz</package>
+                    <package>https://pypi.python.org/packages/source/t/tornado/tornado-4.2.1.tar.gz</package>
+                    <package>https://pypi.python.org/packages/source/b/burrito/burrito-0.9.1.tar.gz</package>
+                    <package>https://pypi.python.org/packages/source/b/burrito-fillings/burrito-fillings-0.1.1.tar.gz</package>
+                    <package>https://pypi.python.org/packages/source/p/pandas/pandas-0.16.2.tar.gz#md5=a92787bcdf0fc0c6d5f4fe4877335ab5</package>
+                    <package>https://pypi.python.org/packages/source/p/python-dateutil/python-dateutil-2.4.2.tar.gz#md5=4ef68e1c485b09e9f034e10473e5add2</package>
+                    <package>https://pypi.python.org/packages/source/s/setuptools/setuptools-18.3.1.tar.gz#md5=748187b93152fa60287dfb896837fd7c</package> 
+                    <package>https://pypi.python.org/packages/source/m/mock/mock-1.0.1.tar.gz#md5=c3971991738caa55ec7c356bbc154ee2</package> 
+                    <package>https://pypi.python.org/packages/source/n/nose/nose-1.3.7.tar.gz#md5=4d3ad0ff07b61373d2cefc89c5d0b20b</package>
+                    <package>https://pypi.python.org/packages/source/p/pyparsing/pyparsing-2.0.3.tar.gz#md5=0fe479be09fc2cf005f753d3acc35939</package>
+                    <package>https://pypi.python.org/packages/source/p/pexpect/pexpect-3.3.tar.gz</package>
+                    <package>https://pypi.python.org/packages/source/t/traitlets/traitlets-4.0.0.tar.gz#md5=27df56a921848686cf52766177a434f2</package>
+                    <package>https://pypi.python.org/packages/source/s/simplegeneric/simplegeneric-0.8.1.zip</package>
+                    <package>https://pypi.python.org/packages/source/p/pickleshare/pickleshare-0.3.zip</package>
+                    <package>https://pypi.python.org/packages/source/d/decorator/decorator-4.0.2.tar.gz#md5=033c9563af492c4ce2680ee6ca481fa7</package>
+                    <package>https://pypi.python.org/packages/source/q/qiime/qiime-1.9.1.tar.gz#md5=32d4db2b2c888dbbfc6aa33f02725526</package>
+                    <package>https://pypi.python.org/packages/source/q/qiime-default-reference/qiime-default-reference-0.1.3.tar.gz</package>
+                    <package>https://pypi.python.org/packages/source/p/pyzmq/pyzmq-14.7.0.tar.gz#md5=87e3abb33af5794db5ae85c667bbf324</package>
+                </action>
+                
+                
+                <action type="set_environment">
+                    <repository name="package_python_2_7_10" owner="ashok" >
+                       <package name="python" version="2.7.10" />
+                   </repository>
+                    <environment_variable action="prepend_to" name="PYTHONPATH">$INSTALL_DIR</environment_variable>
+                    <environment_variable action="prepend_to" name="PYTHONPATH">$INSTALL_DIR/lib</environment_variable>
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/bin</environment_variable>
+
+                    <environment_variable action="prepend_to" name="LD_LIBRARY_PATH">$ENV[ATLAS_LIB_DIR]</environment_variable>
+                    <environment_variable action="set_to" name="PYTHONPATH_NUMPY">$INSTALL_DIR</environment_variable>
+                    <environment_variable action="prepend_to" name="LD_LIBRARY_PATH">$ENV[ATLAS_LIB_DIR]/atlas</environment_variable>
+                    <environment_variable action="prepend_to" name="PATH">$ENV[PATH_NUMPY]</environment_variable>
+                    <environment_variable action="prepend_to" name="PATH">$ENV[PATH_OPENMPI]</environment_variable>
+
+                    <environment_variable action="set_to" name="PYTHONPATH_QIIME_PYTHON_DEP">$INSTALL_DIR</environment_variable>
+                    <environment_variable action="set_to" name="PATH_QIIME_PYTHON_DEP">$INSTALL_DIR/bin</environment_variable>
+                    <environment_variable action="set_to" name="QIIME_PYTHON_DEP_ROOT_DIR">$INSTALL_DIR</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+
+    <package name="qiime_r_dep" version="1.9.1">
+        <install version="1.0">
+            <actions>
+                <action type="set_environment_for_install">
+                    <environment_variable name="LD_LIBRARY_PATH" action="prepend_to">$INSTALL_DIR/S4Vectors/include</environment_variable>
+                    <environment_variable name="C_INCLUDE_PATH" action="prepend_to">$INSTALL_DIR/S4Vectors/include</environment_variable>
+                </action>
+                <action type="setup_r_environment">
+                    <repository name="package_r_3_1_2" owner="ashok" >
+                        <package name="R" version="3.1.2" />
+                    </repository>
+                    <!-- packages for ape-->
+                    <package>https://cran.r-project.org/src/contrib/lattice_0.20-33.tar.gz</package>
+                    <package>https://cran.r-project.org/src/contrib/nlme_3.1-122.tar.gz</package>
+                    <package>https://cran.r-project.org/src/contrib/ape_3.3.tar.gz</package>
+                    <!-- packages for optimalcapturesegmentation-->
+                    <package>http://bioinformatics.nki.nl/software/ocs/downloads/optimalCaptureSegmentation_0.9-4.tar.gz</package>
+                    <!-- packages for rcolorbrewer-->
+                    <package>https://cran.r-project.org/src/contrib/RColorBrewer_1.1-2.tar.gz</package>
+                    <!-- packages for optparse-->
+                    <package>https://cran.r-project.org/src/contrib/getopt_1.20.0.tar.gz</package>
+                    <package>https://mran.revolutionanalytics.com/src/contrib/optparse_1.3.2.tar.gz</package>
+                    <!-- packages for randomforest-->
+                                <!-- <package>https://cran.r-project.org/src/contrib/RColorBrewer_1.1-2.tar.gz</package> -->
+                    <package>https://cran.r-project.org/src/contrib/MASS_7.3-44.tar.gz</package>
+                    <package>https://cran.r-project.org/src/contrib/randomForest_4.6-12.tar.gz</package>
+                    <!-- packages for biomformat-->
+                    <package>https://cran.r-project.org/src/contrib/Rcpp_0.12.1.tar.gz</package>
+                    <package>https://cran.r-project.org/src/contrib/plyr_1.8.3.tar.gz</package>
+                    <package>https://cran.r-project.org/src/contrib/RJSONIO_1.3-0.tar.gz</package>
+                                <!-- <package>https://cran.r-project.org/src/contrib/lattice_0.20-33.tar.gz</package> -->                    
+                    <package>https://cran.r-project.org/src/contrib/Matrix_1.2-2.tar.gz</package>
+                    <package>https://cran.r-project.org/src/contrib/biom_0.3.12.tar.gz</package>
+                    <!-- packages for Deseq2-->
+                                <!-- <package>https://cran.r-project.org/src/contrib/getopt_1.20.0.tar.gz</package> -->
+                    <package>http://bioconductor.org/packages/release/bioc/src/contrib/BiocGenerics_0.14.0.tar.gz</package>
+                    <package>http://www.bioconductor.org/packages/release/bioc/src/contrib/S4Vectors_0.6.6.tar.gz</package>
+                    <package>http://bioconductor.org/packages/release/bioc/src/contrib/IRanges_2.2.9.tar.gz</package>
+                    <package>http://www.bioconductor.org/packages/release/bioc/src/contrib/XVector_0.8.0.tar.gz</package>
+                    <package>http://bioconductor.org/packages/release/bioc/src/contrib/GenomeInfoDb_1.4.3.tar.gz</package>
+                    <package>http://bioconductor.org/packages/release/bioc/src/contrib/GenomicRanges_1.20.8.tar.gz</package>
+                                <!-- <package>https://github.com/bgruening/download_store/raw/master/DESeq2-1_2_10/Rcpp_0.11.0.tar.gz</package> -->
+                    <package>https://github.com/bgruening/download_store/raw/master/DESeq2-1_2_10/RcppArmadillo_0.4.000.2.tar.gz</package>
+                    <package>https://github.com/bgruening/download_store/raw/master/DESeq2-1_2_10/locfit_1.5-9.1.tar.gz</package>
+                    <package>https://github.com/bgruening/download_store/raw/master/DESeq2-1_2_10/Biobase_2.22.0.tar.gz</package>
+                    <package>https://github.com/bgruening/download_store/raw/master/DESeq2-1_2_10/DBI_0.2-7.tar.gz</package>
+                    <package>https://github.com/bgruening/download_store/raw/master/DESeq2-1_2_10/RSQLite_0.11.4.tar.gz</package>
+                    <package>https://github.com/bgruening/download_store/raw/master/DESeq2-1_2_10/AnnotationDbi_1.24.0.tar.gz</package>
+                    <package>https://github.com/bgruening/download_store/raw/master/DESeq2-1_2_10/xtable_1.7-1.tar.gz</package>
+                    <package>https://github.com/bgruening/download_store/raw/master/DESeq2-1_2_10/XML_3.98-1.1.tar.gz</package>
+                    <package>http://bioconductor.org/packages/release/bioc/src/contrib/AnnotationDbi_1.30.1.tar.gz</package>
+                    <package>https://github.com/bgruening/download_store/raw/master/DESeq2-1_2_10/annotate_1.40.0.tar.gz</package>
+                    <package>https://github.com/bgruening/download_store/raw/master/DESeq2-1_2_10/genefilter_1.44.0.tar.gz</package>
+                    <package>https://github.com/bgruening/download_store/raw/master/DESeq2-1_2_10/DESeq2_1.2.10.tar.gz</package>
+                    <package>https://github.com/bgruening/download_store/raw/master/DESeq2-1_2_10/rjson_0.2.13.tar.gz</package>
+                    <package>http://cran.fhcrc.org/src/contrib/matrixStats_0.14.2.tar.gz</package>
+                    <package>http://cran.fhcrc.org/src/contrib/gtools_3.5.0.tar.gz</package>
+                    <package>http://cran.fhcrc.org/src/contrib/gdata_2.17.0.tar.gz</package>
+                    <package>http://cran.fhcrc.org/src/contrib/bitops_1.0-6.tar.gz</package>
+                    <package>http://cran.fhcrc.org/src/contrib/caTools_1.17.1.tar.gz</package>
+                    <package>http://cran.fhcrc.org/src/contrib/KernSmooth_2.23-15.tar.gz</package>
+                    <package>http://cran.fhcrc.org/src/contrib/gplots_2.17.0.tar.gz</package>
+                    <package>http://bioconductor.org/packages/release/bioc/src/contrib/limma_3.24.15.tar.gz</package>
+                    <package>http://bioconductor.org/packages/release/bioc/src/contrib/metagenomeSeq_1.10.0.tar.gz</package>
+                    <package>https://cran.r-project.org/src/contrib/cluster_2.0.3.tar.gz</package>
+                    <package>https://cran.r-project.org/src/contrib/mgcv_1.8-7.tar.gz</package>
+                    <package>https://cran.r-project.org/src/contrib/permute_0.8-4.tar.gz</package>
+                </action>
+                <action type="set_environment">
+                    <environment_variable action="set_to" name="QIIME_R_DEP_ROOT_PATH">$INSTALL_DIR</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>    
+</tool_dependency>

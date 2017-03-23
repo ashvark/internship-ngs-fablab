@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="sourcetracker" version="1.0.0">
+        <install version="1.0">
+            <actions>
+            	<action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv https://github.com/danknights/sourcetracker/archive/sourcetracker-0.9.5.tar.gz -O sourcetracker-0.9.5.tar.gz </action>
+                <action type="shell_command">tar xfz sourcetracker-0.9.5.tar.gz</action>
+                <action type="shell_command">rm sourcetracker-0.9.5.tar.gz</action>
+                <action type="change_directory">sourcetracker-sourcetracker-0.9.5</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/sourcetracker-sourcetracker-0.9.5</environment_variable>
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/sourcetracker-sourcetracker-0.9.5</environment_variable>
+
+                    <environment_variable name="SOURCETRACKER_PATH" action="set_to">$INSTALL_DIR/sourcetracker-sourcetracker-0.9.5/src</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+</tool_dependency>

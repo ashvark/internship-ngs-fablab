@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="R" version="3.1.2">
+        <repository  name="package_r_3_1_2" owner="avaradha" prior_installation_required="True"  />
+    </package>
+    <package name="metagenomeseq" version="1.10.0">
+        <install version="1.0">
+            <actions>
+                <action type="setup_r_environment">
+                    <repository name="package_r_3_1_2" owner="avaradha" >
+                        <package name="R" version="3.1.2" />
+                    </repository>
+                    <package>http://cran.fhcrc.org/src/contrib/RColorBrewer_1.1-2.tar.gz</package>
+                    <package>http://cran.fhcrc.org/src/contrib/matrixStats_0.14.2.tar.gz</package>
+                    <package>http://cran.fhcrc.org/src/contrib/gtools_3.5.0.tar.gz</package>
+                    <package>http://cran.fhcrc.org/src/contrib/gdata_2.17.0.tar.gz</package>
+                    <package>http://cran.fhcrc.org/src/contrib/bitops_1.0-6.tar.gz</package>
+                    <package>http://cran.fhcrc.org/src/contrib/caTools_1.17.1.tar.gz</package>
+                    <package>http://cran.fhcrc.org/src/contrib/KernSmooth_2.23-15.tar.gz</package>
+                    <package>http://cran.fhcrc.org/src/contrib/gplots_2.17.0.tar.gz</package>
+                    <package>http://bioconductor.org/packages/release/bioc/src/contrib/BiocGenerics_0.14.0.tar.gz</package>
+                    <package>http://bioconductor.org/packages/release/bioc/src/contrib/Biobase_2.28.0.tar.gz</package>
+                    <package>http://bioconductor.org/packages/release/bioc/src/contrib/limma_3.24.15.tar.gz</package>
+                    <package>http://bioconductor.org/packages/release/bioc/src/contrib/metagenomeSeq_1.10.0.tar.gz</package>
+                </action>
+            </actions>
+        </install>
+    </package>
+</tool_dependency>

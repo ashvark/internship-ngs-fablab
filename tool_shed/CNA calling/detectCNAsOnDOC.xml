@@ -1,0 +1,64 @@
+<tool id="DetectCNAs" name="Detect Copy Number Alterations" >
+    <requirements>
+        <requirement type="package" version="3.1.2">R</requirement>
+        <requirement type="package" version="0.9.4">optimalcapturesegmentation</requirement>
+    </requirements>
+        <command interpreter="bash">
+            <![CDATA[
+                #if $plotChr.selectPlotChr == "single":
+                        runCNAdetection.sh $testDOC $controlDOC $kMax $minExons $minCov $plotChr.singleChr $output_plot $output_list $cytoBands
+                #else:
+                        runCNAdetection.sh $testDOC $controlDOC $kMax $minExons $minCov $plotChr.selectPlotChr $output_plot $output_list FALSE
+                #end if
+                ]]>
+        </command>
+        <inputs>
+
+                <param name="testDOC" type="data" format="rtable,tabular" label="Select DepthOfCoverage result table of test sample" />
+                <param name="controlDOC" type="data" format="rtable,tabular" label="Select DepthOfCoverage result table of control sample" />
+                <param name="kMax" type="text" value="10" label="Define the maximum number of segments per chromosome (default: 10)." />
+                <param name="minExons" type="text" value="2" label="Define the minimum number of exons needed to define a segments (default: 2)." />
+                <param name="minCov" type="text" value="10" label="Define the minimum mean coverage of an exon to be regarded in analysis (default: 10)." />
+
+
+                <conditional name="plotChr">
+
+                        <param name="selectPlotChr" type="select" label="Plot only a single chromosome? (default: all chromosomes)" >
+                                <option value="all">Plot all chromosomes</option>
+                                <option value="autosomes">Plot only autosomes, no X and Y</option>
+                                <option value="single">Plot single chromosome</option>
+                        </param>
+
+                        <when value="single">
+                                <param name="singleChr" type="text" value="1" label="Which chromosome should be plotted?" />
+                                <param name="cytoBands" type="data" format="tabular" label="Select file containing information about cytoBands" />
+                        </when>
+
+                </conditional>
+
+        </inputs>
+
+        <outputs>
+
+                <data format="txt" name="output_list" label="CNA_list" />
+                <data format="pdf" name="output_plot" label="CNA_plot" />
+
+        </outputs>
+
+        <help>
+
+        **What it does**
+
+        ------
+
+        **Input formats**
+
+        ------
+
+        **Output**
+
+
+        </help>
+
+</tool>
+

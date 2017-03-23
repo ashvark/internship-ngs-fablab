@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="seqprep" version="1.1">
+        <install version="1.0">
+            <actions>
+            	<action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv https://github.com/jstjohn/SeqPrep/archive/v1.1.tar.gz -O seqprep-1.1.tar.gz </action>
+                <action type="shell_command">tar zxf seqprep-1.1.tar.gz</action>
+                <action type="shell_command">rm seqprep-1.1.tar.gz</action>
+                <action type="change_directory">SeqPrep-1.1</action>
+                <action type="shell_command">make</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/SeqPrep-1.1</environment_variable>
+                    <environment_variable action="set_to" name="PATH_SEQPREP">$INSTALL_DIR/SeqPrep-1.1</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+</tool_dependency>

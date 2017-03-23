@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="python" version="2.7.10">
+        <repository name="package_python_2_7_10" owner="avaradha" prior_installation_required="True" />
+    </package>
+    <package name="numpy" version="1.9">
+        <repository name="package_python_2_7_10_numpy_1_9" owner="avaradha" prior_installation_required="True" />
+    </package>
+    <package name="cython" version="0.23.1">
+        <repository name="package_python_2_7_10_cython_0_23_1" owner="avaradha" prior_installation_required="True" />
+    </package>
+    <package name="zlib" version="1.2.8">
+        <repository name="package_zlib_1_2_8" owner="avaradha" prior_installation_required="True"  />
+    </package>
+    <package name="cogent" version="1.5.3">
+        <install version="1.0">
+            <actions>
+                <action type="setup_python_environment">
+                   <repository name="package_python_2_7_10" owner="avaradha" >
+                       <package name="python" version="2.7.10" />
+                   </repository>
+                    <repository name="package_python_2_7_10_numpy_1_9" owner="avaradha" >
+                        <package name="numpy" version="1.9" />
+                    </repository>
+                    <repository name="package_python_2_7_10_cython_0_23_1" owner="avaradha" >
+                        <package name="cython" version="0.23.1" />
+                    </repository>
+                    <repository name="package_zlib_1_2_8" owner="avaradha" >
+                        <package name="zlib" version="1.2.8" />
+                    </repository>
+                    <!-- allow downloading and installing an Python package from https://pypi.org/ -->
+                    <package>https://pypi.python.org/packages/source/c/cogent/cogent-1.5.3.tgz</package>
+                </action>
+               <!--  <action type="shell_command">wget https://pypi.python.org/packages/source/c/cogent/cogent-1.5.3.tgz </action>
+                <action type="shell_command">tar xfz cogent-1.5.3.tgz</action>
+                <action type="change_directory">cogent-1.5.3</action>
+                <action type="shell_command">
+                      python -c "import numpy; print numpy.version.version" &amp;&amp; env >> $INSTALL_DIR/log.txt:
+                </action>
+                <action type="shell_command">
+                        python setup.py build_ext -if
+                </action>
+                <action type="make_directory">$INSTALL_DIR/cogent</action>
+                <action type="move_directory_files">
+                        <source_directory>cogent</source_directory>
+                        <destination_directory>$INSTALL_DIR/cogent/</destination_directory>
+                </action> -->
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PYTHONPATH">$INSTALL_DIR</environment_variable>
+                    <environment_variable action="prepend_to" name="PYTHONPATH">$ENV[PYTHONPATH_NUMPY]</environment_variable>
+                    <environment_variable action="prepend_to" name="PATH">$ENV[PATH_NUMPY]</environment_variable>
+                    <environment_variable action="prepend_to" name="PYTHONPATH">$ENV[PYTHONPATH_CYTHON]</environment_variable>
+                    <environment_variable action="prepend_to" name="PATH">$ENV[PATH_CYTHON]</environment_variable>
+                    <environment_variable action="set_to" name="PYTHONPATH_COGENT">$INSTALL_DIR</environment_variable>
+                    <environment_variable action="set_to" name="PATH_PYCOGENT">$INSTALL_DIR</environment_variable>
+                    <environment_variable action="set_to" name="COGENT_ROOT_DIR">$INSTALL_DIR</environment_variable>
+                </action>
+            </actions>
+        </install>
+        <readme>Compiling numpy requires a C and Fortran compiler (typically gcc and gfortran). The PYTHONPATH for numpy can be accessed through PYTHONPATH_NUMPY and the binaries with PATH_NUMPY.</readme>
+    </package>
+</tool_dependency>

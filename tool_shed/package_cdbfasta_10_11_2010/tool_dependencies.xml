@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="cdbfasta" version="10.11.2010">
+        <install version="1.0">
+            <actions>
+            	<action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv ftp://occams.dfci.harvard.edu/pub/bio/tgi/software/cdbfasta/cdbfasta.tar.gz -O cdbfasta-10.11.2010.tar.gz </action>
+                <action type="shell_command">tar xfz cdbfasta-10.11.2010.tar.gz</action>
+                <action type="shell_command">rm cdbfasta-10.11.2010.tar.gz</action>
+                <action type="change_directory">cdbfasta</action>
+                <action type="shell_command">make</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/cdbfasta</environment_variable>
+                    <environment_variable action="set_to" name="PATH_CDBFASTA">$INSTALL_DIR/cdbfasta</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+</tool_dependency>

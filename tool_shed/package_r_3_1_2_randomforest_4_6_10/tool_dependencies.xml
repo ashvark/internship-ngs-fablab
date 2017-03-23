@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="R" version="3.1.2">
+        <repository name="package_r_3_1_2" owner="avaradha" prior_installation_required="True" />
+    </package>
+    <package name="randomforest" version="4.6.10">
+        <install version="1.0">
+            <actions>
+                <action type="setup_r_environment">
+                    <repository name="package_r_3_1_2" owner="avaradha" >
+                        <package name="R" version="3.1.2" />
+                    </repository>
+                    <package>https://cran.r-project.org/src/contrib/RColorBrewer_1.1-2.tar.gz</package>
+                    <package>https://cran.r-project.org/src/contrib/MASS_7.3-44.tar.gz</package>
+                    <package>https://cran.r-project.org/src/contrib/randomForest_4.6-10.tar.gz</package>
+                </action>
+            </actions>
+        </install>
+    </package>
+</tool_dependency>

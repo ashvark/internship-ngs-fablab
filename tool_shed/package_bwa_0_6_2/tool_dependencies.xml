@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="bwa" version="0.6.2">
+        <install version="1.0">
+            <actions>
+            	<action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv http://downloads.sourceforge.net/project/bio-bwa/bwa-0.6.2.tar.bz2 -O bwa-0.6.2.tar.bz2 </action>
+                <action type="shell_command">tar jxf bwa-0.6.2.tar.bz2</action>
+                <action type="shell_command">rm bwa-0.6.2.tar.bz2</action>
+                <action type="change_directory">bwa-0.6.2</action>
+                <action type="shell_command">make</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/bwa-0.6.2</environment_variable>
+                    <environment_variable action="set_to" name="PATH_BWA">$INSTALL_DIR/bwa-0.6.2</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+</tool_dependency>

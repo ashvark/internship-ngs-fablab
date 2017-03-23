@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="python" version="2.7.10">
+        <repository name="package_python_2_7_10" owner="avaradha" prior_installation_required="True"  />
+    </package>
+    <package name="hdf5" version="1.8.12">
+        <repository name="package_hdf5_1_8_12" owner="avaradha" prior_installation_required="True"  />
+    </package>
+    <package name="numpy" version="1.9">
+        <repository name="package_python_2_7_10_numpy_1_9" owner="avaradha"  />
+    </package>
+    <package name="cython" version="0.23.1">
+        <repository name="package_python_2_7_10_cython_0_23_1" owner="avaradha"  />
+    </package>
+    <package name="h5py" version="2.5.0">
+        <install version="1.0">
+            <actions>
+                <action type="setup_python_environment">
+                   <repository name="package_python_2_7_10" owner="avaradha" >
+                       <package name="python" version="2.7.10" />
+                   </repository>
+                    <repository name="package_python_2_7_10_numpy_1_9" owner="avaradha" >
+                        <package name="numpy" version="1.9" />
+                    </repository>
+                    <repository name="package_python_2_7_10_cython_0_23_1" owner="avaradha" >
+                        <package name="cython" version="0.23.1" />
+                    </repository>
+                    <repository name="package_hdf5_1_8_12" owner="avaradha" >
+                        <package name="hdf5" version="1.8.12" />
+                    </repository>
+                    <!-- allow downloading and installing an Python package from https://pypi.org/ -->
+                    <package>https://pypi.python.org/packages/source/h/h5py/h5py-2.5.0.tar.gz</package>
+                </action>
+                <!-- <action type="download_by_url">https://pypi.python.org/packages/source/h/h5py/h5py-2.5.0.tar.gz</action>
+                <action type="set_environment_for_install">
+                    <repository name="package_hdf5_1_8_12" owner="avaradha" prior_installation_required="True" >
+                        <package name="hdf5" version="1.8.12" />
+                    </repository>
+                    <repository name="package_numpy_1_9" owner="avaradha" >
+                        <package name="numpy" version="1.9" />
+                    </repository>
+                    <repository name="package_cython_0_20_1" owner="avaradha" >
+                        <package name="cython" version="0.20.1" />
+                    </repository>
+                    <environment_variable action="set_to" name="HDF5_DIR">$HDF5_LIBRARY_PATH</environment_variable>
+                </action>
+                <action type="make_directory">$INSTALL_DIR/lib/python</action>
+                <action type="shell_command">
+                    export PYTHONPATH=$PYTHONPATH:$INSTALL_DIR/lib/python &amp;&amp;
+                    python setup.py install install-lib $INSTALL_DIR/lib/python
+                </action> -->
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PYTHONPATH">$INSTALL_DIR</environment_variable>
+                    <environment_variable action="prepend_to" name="PYTHONPATH">$ENV[PYTHONPATH_NUMPY]</environment_variable>
+                    <environment_variable action="prepend_to" name="PATH">$ENV[PATH_NUMPY]</environment_variable>
+                    <environment_variable action="prepend_to" name="PYTHONPATH">$ENV[PYTHONPATH_CYTHON]</environment_variable>
+                    <environment_variable action="prepend_to" name="PATH">$ENV[PATH_CYTHON]</environment_variable>
+                    <environment_variable action="set_to" name="PYTHONPATH_H5PY">$INSTALL_DIR</environment_variable>
+                    <environment_variable action="set_to" name="PATH_H5PY">$INSTALL_DIR</environment_variable>
+                    <environment_variable action="set_to" name="H5PY_ROOT_DIR">$INSTALL_DIR</environment_variable>
+                </action>
+            </actions>
+        </install>
+        <readme>
+            Compiling h5py requires cython.
+        </readme>
+    </package>
+</tool_dependency>

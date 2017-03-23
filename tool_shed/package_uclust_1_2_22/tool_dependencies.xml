@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="uclust" version="1.2.22">
+        <install version="1.0">
+            <actions>
+                <action type="download_file">http://drive5.com/uclust/uclustq1.2.22_i86linux64</action>
+                <action type="move_file" rename_to="uclust">
+                    <source>uclustq1.2.22_i86linux64</source>
+                    <destination>$INSTALL_DIR/bin/</destination>
+                </action>
+                <action type="chmod">
+                    <file mode="755">$INSTALL_DIR/bin/uclust</file>
+                </action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/bin</environment_variable>
+                    <environment_variable action="set_to" name="PATH_UCLUST">$INSTALL_DIR/bin</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+</tool_dependency>

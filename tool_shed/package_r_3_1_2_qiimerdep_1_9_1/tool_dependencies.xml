@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="R" version="3.1.2">
+        <repository name="package_r_3_1_2" owner="avaradha" prior_installation_required="True" />
+    </package>
+    <package name="qiime_r_dep" version="1.9.1">
+        <install version="1.0">
+            <actions>
+                <action type="set_environment_for_install">
+                    <environment_variable name="LD_LIBRARY_PATH" action="prepend_to">$INSTALL_DIR/S4Vectors/include</environment_variable>
+                    <environment_variable name="C_INCLUDE_PATH" action="prepend_to">$INSTALL_DIR/S4Vectors/include</environment_variable>
+                </action>
+                <action type="setup_r_environment">
+                    <repository name="package_r_3_1_2" owner="avaradha" >
+                        <package name="R" version="3.1.2" />
+                    </repository>
+                    <!-- packages for ape-->
+                    <package>https://cran.r-project.org/src/contrib/lattice_0.20-33.tar.gz</package>
+                    <package>https://cran.r-project.org/src/contrib/nlme_3.1-122.tar.gz</package>
+                    <package>https://cran.r-project.org/src/contrib/ape_3.3.tar.gz</package>
+
+                    <!-- packages for optimalcapturesegmentation-->
+                    <package>http://bioinformatics.nki.nl/software/ocs/downloads/optimalCaptureSegmentation_0.9-4.tar.gz</package>
+
+                    <!-- packages for rcolorbrewer-->
+                    <package>https://cran.r-project.org/src/contrib/RColorBrewer_1.1-2.tar.gz</package>
+
+                    <!-- packages for optparse-->
+                    <package>https://cran.r-project.org/src/contrib/getopt_1.20.0.tar.gz</package>
+                    <package>https://mran.revolutionanalytics.com/src/contrib/optparse_1.3.2.tar.gz</package>
+
+                    <!-- packages for randomforest-->
+                                <!-- <package>https://cran.r-project.org/src/contrib/RColorBrewer_1.1-2.tar.gz</package> -->
+                    <package>https://cran.r-project.org/src/contrib/MASS_7.3-44.tar.gz</package>
+                    <package>https://cran.r-project.org/src/contrib/randomForest_4.6-12.tar.gz</package>
+                 
+                    <!-- packages for biomformat-->
+                    <package>https://cran.r-project.org/src/contrib/Rcpp_0.12.1.tar.gz</package>
+                    <package>https://cran.r-project.org/src/contrib/plyr_1.8.3.tar.gz</package>
+                    <package>https://cran.r-project.org/src/contrib/RJSONIO_1.3-0.tar.gz</package>
+                                <!-- <package>https://cran.r-project.org/src/contrib/lattice_0.20-33.tar.gz</package> -->                    
+                    <package>https://cran.r-project.org/src/contrib/Matrix_1.2-2.tar.gz</package>
+                    <package>https://cran.r-project.org/src/contrib/biom_0.3.12.tar.gz</package>
+
+
+                    <!-- packages for Deseq2-->
+                                <!-- <package>https://cran.r-project.org/src/contrib/getopt_1.20.0.tar.gz</package> -->
+                    <package>http://bioconductor.org/packages/release/bioc/src/contrib/BiocGenerics_0.14.0.tar.gz</package>
+                    
+                    <package>http://www.bioconductor.org/packages/release/bioc/src/contrib/S4Vectors_0.6.6.tar.gz</package>
+                    <package>http://bioconductor.org/packages/release/bioc/src/contrib/IRanges_2.2.9.tar.gz</package>
+                    <package>http://www.bioconductor.org/packages/release/bioc/src/contrib/XVector_0.8.0.tar.gz</package>
+                    <package>http://bioconductor.org/packages/release/bioc/src/contrib/GenomeInfoDb_1.4.3.tar.gz</package>
+                    <package>http://bioconductor.org/packages/release/bioc/src/contrib/GenomicRanges_1.20.8.tar.gz</package>
+                                <!-- <package>https://github.com/bgruening/download_store/raw/master/DESeq2-1_2_10/Rcpp_0.11.0.tar.gz</package> -->
+                    <package>https://github.com/bgruening/download_store/raw/master/DESeq2-1_2_10/RcppArmadillo_0.4.000.2.tar.gz</package>
+                    <package>https://github.com/bgruening/download_store/raw/master/DESeq2-1_2_10/locfit_1.5-9.1.tar.gz</package>
+                    <package>https://github.com/bgruening/download_store/raw/master/DESeq2-1_2_10/Biobase_2.22.0.tar.gz</package>
+                    <package>https://github.com/bgruening/download_store/raw/master/DESeq2-1_2_10/DBI_0.2-7.tar.gz</package>
+                    <package>https://github.com/bgruening/download_store/raw/master/DESeq2-1_2_10/RSQLite_0.11.4.tar.gz</package>
+                    <package>https://github.com/bgruening/download_store/raw/master/DESeq2-1_2_10/AnnotationDbi_1.24.0.tar.gz</package>
+                    <package>https://github.com/bgruening/download_store/raw/master/DESeq2-1_2_10/xtable_1.7-1.tar.gz</package>
+                    <package>https://github.com/bgruening/download_store/raw/master/DESeq2-1_2_10/XML_3.98-1.1.tar.gz</package>
+                    <package>http://bioconductor.org/packages/release/bioc/src/contrib/AnnotationDbi_1.30.1.tar.gz</package>
+                    <package>https://github.com/bgruening/download_store/raw/master/DESeq2-1_2_10/annotate_1.40.0.tar.gz</package>
+                    <package>https://github.com/bgruening/download_store/raw/master/DESeq2-1_2_10/genefilter_1.44.0.tar.gz</package>
+                                <!-- <package>https://github.com/bgruening/download_store/raw/master/DESeq2-1_2_10/RColorBrewer_1.0-5.tar.gz</package> -->
+                    <package>https://github.com/bgruening/download_store/raw/master/DESeq2-1_2_10/DESeq2_1.2.10.tar.gz</package>
+                    <package>https://github.com/bgruening/download_store/raw/master/DESeq2-1_2_10/rjson_0.2.13.tar.gz</package>
+
+
+                    <!-- packages for metagenomeseq-->
+                                <!-- <package>http://cran.fhcrc.org/src/contrib/RColorBrewer_1.1-2.tar.gz</package> -->
+                    <package>http://cran.fhcrc.org/src/contrib/matrixStats_0.14.2.tar.gz</package>
+                    <package>http://cran.fhcrc.org/src/contrib/gtools_3.5.0.tar.gz</package>
+                    <package>http://cran.fhcrc.org/src/contrib/gdata_2.17.0.tar.gz</package>
+                    <package>http://cran.fhcrc.org/src/contrib/bitops_1.0-6.tar.gz</package>
+                    <package>http://cran.fhcrc.org/src/contrib/caTools_1.17.1.tar.gz</package>
+                    <package>http://cran.fhcrc.org/src/contrib/KernSmooth_2.23-15.tar.gz</package>
+                    <package>http://cran.fhcrc.org/src/contrib/gplots_2.17.0.tar.gz</package>
+                                <!-- <package>http://bioconductor.org/packages/release/bioc/src/contrib/BiocGenerics_0.14.0.tar.gz</package> -->
+                                <!-- <package>http://bioconductor.org/packages/release/bioc/src/contrib/Biobase_2.28.0.tar.gz</package> -->
+                    <package>http://bioconductor.org/packages/release/bioc/src/contrib/limma_3.24.15.tar.gz</package>
+                    <package>http://bioconductor.org/packages/release/bioc/src/contrib/metagenomeSeq_1.10.0.tar.gz</package>
+
+
+
+                    <!-- packages for vegan-->
+                                <!-- <package>https://cran.r-project.org/src/contrib/MASS_7.3-44.tar.gz</package> -->
+                    <package>https://cran.r-project.org/src/contrib/cluster_2.0.3.tar.gz</package>
+                                <!-- <package>https://cran.r-project.org/src/contrib/lattice_0.20-33.tar.gz</package> -->
+                                <!-- <package>https://cran.r-project.org/src/contrib/Matrix_1.2-2.tar.gz</package> -->
+                    <package>https://cran.r-project.org/src/contrib/mgcv_1.8-7.tar.gz</package>
+                    <package>https://cran.r-project.org/src/contrib/permute_0.8-4.tar.gz</package>
+                    <!-- <package>https://github.com/vegandevs/vegan/archive/v2.3-1.tar.gz</package> -->
+                </action>
+                <!-- <package>Custom Installation of Vegan tool</package> -->
+                <action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv --no-check-certificate https://cran.r-project.org/src/contrib/vegan_2.3-1.tar.gz -O $INSTALL_DIR/vegan_2.3-1.tar.gz</action>
+                <action type="shell_command">cd $INSTALL_DIR &amp;&amp; tar xfz $INSTALL_DIR/vegan_2.3-0.tar.gz</action>
+                <action type="change_directory">$INSTALL_DIR/vegan</action>
+                <action type="shell_command">R CMD INSTALL $INSTALL_DIR/vegan -l $INSTALL_DIR </action>
+                <action type="set_environment">
+                    <repository name="package_r_3_1_2" owner="avaradha" >
+                        <package name="R" version="3.1.2" />
+                    </repository>
+                    <environment_variable action="set_to" name="QIIME_R_DEP_ROOT_DIR">$INSTALL_DIR</environment_variable>
+                </action>
+            </actions>
+        </install>
+    </package>
+</tool_dependency>

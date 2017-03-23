@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="openmpi" version="1.8.8">
+        <repository name="package_openmpi_1_8_8" owner="avaradha" prior_installation_required="True" />
+    </package>
+    <package name="gsl" version="1.16">
+        <repository name="package_gsl_1_16" owner="avaradha" prior_installation_required="True" />
+    </package>
+    <package name="ampliconnoise" version="1.27">
+        <install version="1.0">
+            <actions>
+                <action type="set_environment_for_install">
+                    <repository name="package_openmpi_1_8_8" owner="avaradha" >
+                        <package name="openmpi" version="1.8.8" />
+                    </repository>
+                    <repository name="package_gsl_1_16" owner="avaradha" >
+                        <package name="gsl" version="1.16" />
+                    </repository>
+                </action>
+            	<action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv http://ampliconnoise.googlecode.com/files/AmpliconNoiseV1.27.tar.gz -O AmpliconNoiseV1.27.tar.gz </action>
+                <action type="shell_command">tar xfz AmpliconNoiseV1.27.tar.gz</action>
+                <action type="shell_command">rm AmpliconNoiseV1.27.tar.gz</action>
+                <action type="change_directory">AmpliconNoiseV1.27</action>
+                <action type="shell_command">make clean</action>
+                <action type="shell_command">make</action>
+                <action type="shell_command">make install</action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/AmpliconNoiseV1.27/bin</environment_variable>
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/AmpliconNoiseV1.27/Scripts</environment_variable>
+                    <environment_variable action="set_to" name="PATH_AMPLICON_BIN">$INSTALL_DIR/AmpliconNoiseV1.27/bin</environment_variable>
+                    <environment_variable action="set_to" name="PATH_AMPLICON_SCRIPTS">$INSTALL_DIR/AmpliconNoiseV1.27/Scripts</environment_variable>
+                    <environment_variable name="AMPLICON_NOISE_HOME" action="set_to">$INSTALL_DIR/AmpliconNoiseV1.27</environment_variable>
+                    <environment_variable name="PYRO_LOOKUP_FILE" action="set_to">$INSTALL_DIR/AmpliconNoiseV1.27/Data/LookUp_Titanium.dat</environment_variable>
+                    <environment_variable name="SEQ_LOOKUP_FILE" action="set_to">$INSTALL_DIR/AmpliconNoiseV1.27/Data/Tran.dat</environment_variable>
+                </action>
+            </actions>
+        </install>
+        <readme>
+            Dependancy package: mpicc,gsl
+        </readme>
+    </package>
+</tool_dependency>

@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<tool_dependency>
+    <package name="htslib" version="1.2.1">
+        <repository name="package_htslib_1_2_1" prior_installation_required="True" />
+    </package>
+    <package name="pindel" version="0.2.5b4">
+        <install version="1.0">
+            <actions>
+                 <action type="set_environment_for_install">
+                    <repository name="package_htslib_1_2_1" >
+                        <package name="htslib" version="1.2.1" />
+                        <!-- $HTSLIB_ROOT_PATH should also be loaded to the environment -->
+                    </repository>
+                </action>
+                <action type="change_directory">$INSTALL_DIR</action>
+                <action type="shell_command">wget -nv https://github.com/genome/pindel/archive/v0.2.5b4.tar.gz -O pindel-0.2.5b4.tar.gz</action>
+                <action type="shell_command">tar xfz pindel-0.2.5b4.tar.gz</action>
+                <action type="change_directory">pindel-0.2.5b4</action>
+                <action type="shell_command">echo "HTSLIB_ROOT_PATH----> $HTSLIB_ROOT_PATH"</action>
+                <action type="shell_command">echo "INSTALL_DIR ----> $INSTALL_DIR"</action>
+                <action type="shell_command">echo "$(ls $PWD)"</action>
+                <action type="shell_command">./INSTALL $HTSLIB_ROOT_PATH/</action>
+                <action type="move_file">
+                    <source>pindel</source>
+                    <destination>$INSTALL_DIR/pindel-0.2.5b4/bin</destination>
+                </action>
+                <action type="move_file">
+                    <source>bam2pindel.pl</source>
+                    <destination>$INSTALL_DIR/pindel-0.2.5b4/bin</destination>
+                </action>
+                <action type="move_file">
+                    <source>pindel2vcf</source>
+                    <destination>$INSTALL_DIR/pindel-0.2.5b4/bin</destination>
+                </action>
+                <action type="set_environment">
+                    <environment_variable action="prepend_to" name="PATH">$INSTALL_DIR/pindel-0.2.5b4/bin</environment_variable>
+                </action>
+            </actions>
+        </install>
+        <readme>
+Pindel
+Pindel can detect breakpoints of large deletions, medium sized insertions, inversions, tandem duplications and other structural variants at single-based resolution from next-gen sequence data. It uses a pattern growth approach to identify the breakpoints of these variants from paired-end short reads.
+
+Cite Pindel
+Pindel is developed largely by Kai Ye. Please take a look at the article below for a high level overview of how the method works and how you can use the Pindel tool. Pindel implements the algorithms described in the following paper. Please cite this paper if you find Pindel helpful for your work. Thanks!!!
+
+Ye K, Schulz MH, Long Q, Apweiler R, Ning Z. Pindel: a pattern growth approach to detect break points of large deletions and medium sized insertions from paired-end short reads. Bioinformatics. 2009 Nov 1;25(21):2865-71. Epub 2009 Jun 26.
+        </readme>
+    </package>
+</tool_dependency>
